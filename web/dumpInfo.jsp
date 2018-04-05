@@ -1,0 +1,1 @@
+https://code.luasoftware.com/tutorials/bootstrap/bootstrap-hide-element-based-on-viewport-size/  --- property to hide a div on particular size or view port
