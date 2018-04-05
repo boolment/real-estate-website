@@ -67,9 +67,8 @@
                                             <label for="crosspassword" class="control-label">Varifiy Your New Password</label>
                                             <input type="password" class="form-control" id="crosspassword" placeholder="***********" name="crosspassword" required autocomplete="off">
                                         </div>
-                                        <div class="form-group">
-                                            <!--                                            <label for="mnumber" class="control-label">About Me</label>-->
-                                            <button class="btn btn-success">Save</button>
+                                        <div class="form-group addPropBtn">
+                                            <button class="btn btn-success">Change Password</button>
                                         </div>
                                     </div>
                                 </div>

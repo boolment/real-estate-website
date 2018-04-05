@@ -49,9 +49,15 @@
                         <%@include file="/clientInclude.jsp" %>
                     </div>
                     <div class="col-sm-12 col-md-9">
+
                         <div class="propDetails">
-                            <h4>Owner Registration Form</h4>
+                            <h4>Submit New Property</h4>
                             <form>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4>Owner Basic Details </h4>
+                                    </div> 
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group">
@@ -89,7 +95,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group customRadio">
                                             <label for="owner" class="control-label">Ownership Details</label>
                                             <div class="radio">
                                                 <label class="radio-custom radio-inline" data-initialize="radio" id="owner-0">
@@ -103,7 +109,7 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group customRadio">
                                             <label for="livestype" class="control-label">Who lives in the property ?</label>
 
                                             <div class="radio">
@@ -124,29 +130,21 @@
                                     </div>
                                 </div>
 
-
-
-
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-12">
-                                        <div class="accommodationType">
-                                            <h4>Accommodation Type</h4>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div  class="row">
                                     <div class="col-sm-12">
-                                        <h5>Select Any Property Type</h5>
-                                        <div class="radio">
-                                            <label class="radio-custom radio-inline" data-initialize="radio">
-                                                <input name="propType" type="radio" value="flat"> <span class="radio-label">Flat</span>
-                                            </label>
-                                            <label class="radio-custom radio-inline" data-initialize="radio">
-                                                <input  name="propType" type="radio" value="pg"> <span class="radio-label">PG</span>
-                                            </label>
-                                            <label class="radio-custom radio-inline" data-initialize="radio">
-                                                <input  name="propType" type="radio" value="room"> <span class="radio-label">Room</span>
-                                            </label>
+                                        <div class="form-group customRadio">
+                                            <h4>Accommodation Type</h4>
+                                            <div class="radio">
+                                                <label class="radio-custom radio-inline" data-initialize="radio">
+                                                    <input name="propType" type="radio" value="flat"> <span class="radio-label">Flat</span>
+                                                </label>
+                                                <label class="radio-custom radio-inline" data-initialize="radio">
+                                                    <input  name="propType" type="radio" value="pg"> <span class="radio-label">PG</span>
+                                                </label>
+                                                <label class="radio-custom radio-inline" data-initialize="radio">
+                                                    <input  name="propType" type="radio" value="room"> <span class="radio-label">Room</span>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -239,7 +237,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="row">
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group">
@@ -325,7 +323,7 @@
                                                 <option>After 15 Days</option>
                                                 <option>In 1 Month</option>
                                                 <option>In 2 Month</option>
-                                                <option></option>
+
                                             </select>
                                         </div>
                                     </div>
@@ -342,46 +340,57 @@
 
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <label for="checkbox-1"><input type="checkbox" value="" id="checkbox-1">Food</label>
-                                        <label><input type="checkbox" value="">AC</label>
-                                        <label><input type="checkbox" value="">Non AC</label>
-                                        <label><input type="checkbox" value="">Cooler</label>
-                                        <label><input type="checkbox" value="">Parking</label>
-                                        <label><input type="checkbox" value="">Maid / Servant</label>
-                                        <label><input type="checkbox" value="">Laundry</label>
-                                        <label><input type="checkbox" value="">Water Supply</label>
-                                        <label><input type="checkbox" value="">Electricity</label>
-                                        <label><input type="checkbox" value="">Fridge</label>
-                                        <label><input type="checkbox" value="">Washing Machine</label>
-                                        <label><input type="checkbox" value="">Land Line Phone</label>
-                                        <label><input type="checkbox" value="">TV</label>
-                                        <label><input type="checkbox" value="">Almirah</label>
-                                        <label><input type="checkbox" value="">Mail Box</label>
-                                        <label><input type="checkbox" value="">Door Bell</label>
-                                        <label><input type="checkbox" value="">Bathroom</label>
-                                        <label><input type="checkbox" value="">Balcony</label>
-                                        <label><input type="checkbox" value="">Lift</label>
-                                        <label><input type="checkbox" value="">Wifi</label>
-                                        <label><input type="checkbox" value="">Overlooking Garden</label>
-                                        <label><input type="checkbox" value="">Geyser</label>
-                                        <label><input type="checkbox" value="">Gym</label>
-                                        <label><input type="checkbox" value="">Vasstushastra</label>
-                                        <label><input type="checkbox" value="">Gated Society</label>
-                                        <label><input type="checkbox" value="">Security Gard</label>
-                                        <label><input type="checkbox" value="">Swimming Pool</label>
-                                        <label><input type="checkbox" value="">Power Backup</label>
-                                        <label><input type="checkbox" value="">Indian Toilet</label>
-                                        <label><input type="checkbox" value="">Western Toilet</label>
+                                        <div class="allCheckBox">
+                                            <label><input type="checkbox" value="">Food</label>
+                                            <label><input type="checkbox" value="">AC</label>
+                                            <label><input type="checkbox" value="">Non AC</label>
+                                            <label><input type="checkbox" value="">Cooler</label>
+                                            <label><input type="checkbox" value="">Parking</label>
+                                            <label><input type="checkbox" value="">Maid / Servant</label>
+                                            <label><input type="checkbox" value="">Laundry</label>
+                                            <label><input type="checkbox" value="">Water Supply</label>
+                                            <label><input type="checkbox" value="">Electricity</label>
+                                            <label><input type="checkbox" value="">Fridge</label>
+                                            <label><input type="checkbox" value="">Washing Machine</label>
+                                            <label><input type="checkbox" value="">Land Line Phone</label>
+                                            <label><input type="checkbox" value="">TV</label>
+                                            <label><input type="checkbox" value="">Almirah</label>
+                                            <label><input type="checkbox" value="">Mail Box</label>
+                                            <label><input type="checkbox" value="">Door Bell</label>
+                                            <label><input type="checkbox" value="">Bathroom</label>
+                                            <label><input type="checkbox" value="">Balcony</label>
+                                            <label><input type="checkbox" value="">Lift</label>
+                                            <label><input type="checkbox" value="">Wifi</label>
+                                            <label><input type="checkbox" value="">Overlooking Garden</label>
+                                            <label><input type="checkbox" value="">Geyser</label>
+                                            <label><input type="checkbox" value="">Gym</label>
+                                            <label><input type="checkbox" value="">Vasstushastra</label>
+                                            <label><input type="checkbox" value="">Gated Society</label>
+                                            <label><input type="checkbox" value="">Security Gard</label>
+                                            <label><input type="checkbox" value="">Swimming Pool</label>
+                                            <label><input type="checkbox" value="">Power Backup</label>
+                                            <label><input type="checkbox" value="">Indian Toilet</label>
+                                            <label><input type="checkbox" value="">Western Toilet</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <!--end of form row-->
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group addPropBtn">
+                                            <button class="btn btn-success">Save Property</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--end of form row-->                                
                             </form>
                         </div>
                         <!--propDetails-->
                     </div>
                     <!--end of col-md-9-->
                 </div>
-                    <!--end of row-->
+                <!--end of row-->
             </div>
             <!--end of container-fluid-->
         </section>

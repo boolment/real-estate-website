@@ -562,13 +562,10 @@ footer ul li a{
     border: 1px solid #eee;
     padding: 40px 20px;
 }
-
 .propDetails{
     background-color: #fcfcfc;
-    border: 1px solid #eee;
-   
+    border: 1px solid #eee;  
 }
-
 .propDetails form{
      padding: 30px;
 }
