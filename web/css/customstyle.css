@@ -1,21 +1,12 @@
-
-
-
-
 /* color codes
 #37466f
 #99a1b6
 f8f9faa1
 */
-
-
-
-
 ul{
     list-style: none;
     margin: 0;
 }
-
 a,
 a:hover,
 a:link,
@@ -23,16 +14,11 @@ a:visited,
 a:active{
     text-decoration: none;
 }
-
 body{
     overflow-x: hidden;
     overflow-y: auto;
 }
-
-
-
 /*=======topHeader=============*/
-
 #top-bar{
     background-color: #f5f6f7;
     border-bottom: 1px solid #ccc;
@@ -85,7 +71,6 @@ body{
 .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
     color: #37466f;
 }
-
 /*header*/
 #header{
     background-image: url(../images/header-img.png);
@@ -96,18 +81,15 @@ body{
 
     background-size: cover;
 }
-
 #header .container-fluid{
     padding: 0px;
 }
-
 #header h1{
     font-size: 28px;
     padding: 10px 0;
     margin: 30px 0;
     text-align: center;
 }
-
 .headDiv{
     background-color: #ff0000;
     color: #fff;
@@ -132,7 +114,6 @@ body{
 .headDiv ul li{
     margin-bottom: 5px;
     padding-left: 20px;
-
 }
 .headDiv i{
     color: #9814ae;
@@ -143,7 +124,6 @@ body{
     font-size: 18px;
     padding: 0 10px;
 }
-
 #searchBar{
     width: 100%;
     background-color: #9814ae;
@@ -151,7 +131,6 @@ body{
     color: #fff;
 }
 #searchBar form{
-
     /*    margin: 0 auto;*/
 }
 .searchBarBody label{
@@ -159,19 +138,16 @@ body{
     font-weight: bold;
     font-size: 18px;
 }
-
 .searchBarBody .searchWrapper{
     display: inline-block;
     position: relative;
 }
-
 .searchBarBody span{
     position: absolute;
     bottom: 12px;;
     left: 10px;
     color: #28a745;
 }
-
 .searchLocation{
     width: 35%;
 }
@@ -180,22 +156,18 @@ body{
 .searchPropertyType{
     width: 20%;
 }
-
 #searchBar input[type='search']
 {
     width: 95%;
     padding: 8px 8px 8px 35px;
     border: none;
-
     outline: none;
 }
 #searchBar select{
     width: 100%;
-
     outline: none;
     padding: 8px;
 }
-
 #searchBar input[type='button']
 {
     padding: 8px;
@@ -206,7 +178,6 @@ body{
     cursor: pointer;
     width: 100%;
 }
-
 /*=========services=======*/
 #services{
     /*    background: url(../images/service-section-bg.png) 100% 0 no-repeat;
@@ -216,7 +187,6 @@ body{
     */
     background: url(../images/service-section-bg.png) 100% 0 no-repeat #f7f7f7;
     background-size: cover;
-
     padding: 60px 22px 70px 22px;
 }
 #services h2{
@@ -344,13 +314,10 @@ footer ul li a{
 #customFoo .row{
     padding: 20px 0;
 }
-
 .terms li{
     display: inline-block;
     padding: 0 10px;
 }
-
-
 /*clientInclude*/
 .upload-btn-wrapper {
     position: relative;
@@ -358,7 +325,6 @@ footer ul li a{
     display: inline-block;
     margin: 35px 0 0 20px;
 }
-
 .btn {
     border: 2px solid gray;
     color: gray;
@@ -368,7 +334,6 @@ footer ul li a{
     font-size: 20px;
     font-weight: bold;
 }
-
 .upload-btn-wrapper input[type=file] {
     font-size: 100px;
     position: absolute;
@@ -376,27 +341,21 @@ footer ul li a{
     top: 0;
     opacity: 0;
 }
-
-
 #client-Profile{
     padding: 100px 0;
     background: #fcfcfc;
     border-bottom: 1px solid #eee;
 }
-
-
 #client-Profile .container{
     background-color: #fff;
     padding: 40px 0 40px 40px;
     border: 1px solid #eee;
 }
-
 .clientSideBar{
     background-color: #fcfcfc;
     border: 1px solid #ccc;
     /*    padding: 40px 30px;*/
 }
-
 .clientSideBar h3{
     font-size: 20px;
     color: #fff;
@@ -405,13 +364,11 @@ footer ul li a{
     text-align: center;
     border: 1px solid #28a749;
 }
-
 .clientSideBar h6{
     font-size: 16px;
     font-weight: 200;
     padding: 8px 20px;
 }
-
 .clientSideBar a,
 .clientSideBar a:hover,
 .clientSideBar a:visited,
@@ -420,31 +377,24 @@ footer ul li a{
 {
     color: #37466f;
 }
-
 .clientHeader{
     background-color: #28a745;
     margin-bottom: 40px; 
     color: #fff;
     padding: 10px;
-
 }
 .clientHeader h2{
     font-size: 20px;    
     margin-bottom: 0;
 }
-
 .clientProfileForm{
     margin-top: 40px;
 }
-
 .myProperties{
-
     margin-top: 50px;
 }
-
 .myProperties table thead{
     background-color: #28a745;
-
 }
 .myProperties thead th{
     color: #fff;
@@ -456,11 +406,9 @@ footer ul li a{
     vertical-align: middle;
     border-bottom: none;
 }
-
 .table-bordered thead th{
     border-bottom-width: 0px;
 }
-
 .myProperties h4{
     text-align: center;
     margin-bottom: 20px;
@@ -468,7 +416,6 @@ footer ul li a{
     color: #37466f;
     padding: 10px 0;
 }
-
 .dataTables_length{
     padding: 10px;
     font-size: 15px;
@@ -479,11 +426,9 @@ footer ul li a{
     border-radius: 10px;
     outline: none;
 }
-
 #example_filter{
     padding: 0 20px 0 0;
 }
-
 #example_filter input[type='search']
 {
     border-radius: 10px;
@@ -492,12 +437,9 @@ footer ul li a{
     padding: 5px 10px;
     outline: none;
 }
-
 .myProperties a{
     display: inline-block;
-
 }
-
 .myProperties .fa-edit{
     color: #28a745;
     font-size: 18px;
@@ -506,11 +448,9 @@ footer ul li a{
     margin: 0 5px;
     color: #9814ae;
 }
-
 .myProperties .fa-recycle{
     color: #ff0000;
 }
-
 .myPropertyType{
     /*    width: 80%;*/
     padding: 20px;
@@ -522,12 +462,10 @@ footer ul li a{
     font-weight: bold;
     text-transform: uppercase;
 }
-
 .myPropertyType span{
     display: inline-block;
     padding: 0 10px 0 0;
 }
-
 .myPropertyType .count{
     font-size: 50px;
     font-weight: 900;
@@ -535,7 +473,6 @@ footer ul li a{
 .mypropertyBody .row:first-child{
     margin-bottom: 10px;
 }
-
 .propertyRooms{
     background-color: #28a745;
 }
@@ -548,15 +485,12 @@ footer ul li a{
 .propertyHostels{
     background-color: #37466f;
 }
-
-
 /*add new property page*/
 #addNewProperty{
     padding: 40px 20px;
     background-color: #fcfcfc;
     border-bottom: 1px solid #eee;
 }
-
 #addNewProperty .container-fluid{
     background-color: #fff;
     border: 1px solid #eee;
@@ -591,7 +525,6 @@ footer ul li a{
     margin-left: 5px;
 }
 .addPropBtn{
-
     width: 30%;
     margin: 30px auto 0 auto;
 }
@@ -604,7 +537,6 @@ footer ul li a{
     background-color: #fcfcfc;
     border: 1px solid #eee;
     box-shadow: 0px 0px 15px 1px #eee;
-
 }
 .propImgDiv{
     height: 300px;
@@ -635,14 +567,12 @@ footer ul li a{
     height: 100px;
     /*   we have to remove this one*/
 }
-
 .topDivImg span{
     color: #fff;
     padding: 5px 15px;
     display: inline-block;
     border-radius: 3px;
 }
-
 .topDivImg .property-badge{
     float: right;
     background-color: #28a745;
@@ -650,7 +580,6 @@ footer ul li a{
     right: 15px;
     position: absolute;
 }
-
 .topDivImg .property-for{
     float: left;
     background-color: #ff0000;
@@ -690,7 +619,6 @@ footer ul li a{
     font-weight: bold;
     box-sizing: border-box;
 }
-
 .propIntro .propIcons{
     color: rgba(0,0,0,0.7);
     display: inline-block;

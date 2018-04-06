@@ -42,10 +42,20 @@
         <%@include file="/headerInclude.jsp" %>
 
        
+
+        
         
         <section id="allPropList">
             <div class="container-fluid">
                 <div class="row">
+                    
+                    <div class="col-sm-12 col-md-4">
+                        
+                                             
+                        
+                    </div>
+                    
+                    
                     <div class="col-sm-12 col-md-8">
                         <div class="bodyAllPropList">
                             <div class="row">
@@ -91,6 +101,8 @@
             </div>
         </section>
 
+        
+        
       
         <!--include  footer-->
         <%@include file="/footer.jsp" %>
