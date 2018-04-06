@@ -18,6 +18,14 @@ body{
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
 /*=======topHeader=============*/
 #top-bar{
     background-color: #f5f6f7;
@@ -530,9 +538,26 @@ footer ul li a{
 }
 /*====================Index page single listing layout we have to shift to another page ========================*/
 #allPropList{
-    padding: 50px;
+/*    padding: 10px;*/
     margin-top: 40px;
+    background: #fcfcfc;
+    width: 100% !important;
 }
+
+#allPropList .container-fluid{
+     background-color: #fff;
+     padding: 40px 10px;
+     width: 98% !important;
+     border: 1px solid #eee;
+     
+}
+
+.bodyAllPropList .row{
+    margin-bottom: 30px;
+   
+   
+}
+
 .propDiv{
     background-color: #fcfcfc;
     border: 1px solid #eee;
@@ -644,3 +669,58 @@ footer ul li a{
     padding: 10px 40px;
 
 }
+/*searchBarSide*/
+
+.searchBarInclude{
+    margin-bottom: 20px;
+}
+
+
+.searchBarInclude label{
+    font-size: 13px;
+    font-weight: bold;
+    color: #999;
+    margin-left: 5px;
+}
+
+.searchBarInclude h5{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+    padding:0 0 20px 0;
+    
+}
+
+.searchBarInclude select,
+.searchBarInclude input[type="number"],
+.searchBarInclude input[type="text"]
+{
+    border-radius: 0;
+    outline:none;
+    
+}
+
+.searchBarInclude{
+    background-color: #fcfcfc;
+    box-shadow: 0px 0px 6px 1px #ccc;
+    padding: 20px 10px;
+}
+.filter-search{
+    width: 100%;
+    background-color: #ec5963;
+    color: #fff;
+    outline: none;
+    border: 0;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 14px 0;
+    transition: all ease 0.3s;
+    cursor: pointer;
+}
+.filter-search:hover{
+    opacity: .9;
+}
+
