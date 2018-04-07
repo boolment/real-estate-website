@@ -2,6 +2,7 @@ package controllers;
 
 import DAOImpl.AdminImpl;
 import DAOInterface.AdminInterface;
+import beans.AdminMasterBean;
 import helper.EmailSend;
 import helper.Utility;
 import java.io.IOException;
@@ -37,7 +38,8 @@ public class AdminController extends HttpServlet {
         response.setContentType("application/json");
         HttpSession session = request.getSession();
         String aEmail, aPassword;
-        boolean isValidUserName;
+        boolean result;
+        AdminMasterBean adminmasterbean;
         try {
             PrintWriter out = response.getWriter();
             JSONObject jsonobject = new JSONObject();
@@ -83,25 +85,29 @@ public class AdminController extends HttpServlet {
                         LOG.info("Utility class object is created");
                         String _type = _utility.checkUserLoggedInWith(aEmail);
                         LOG.info("user is LOGgedin with :" + _type);
-                        HashMap<String, String> adminAttributes;
+                        String adminAttributes;
                         AdminInterface adminInterface = new AdminImpl();
                         LOG.info("AdminImpl class object is created here ");
                         if (null != _type) {
                             LOG.info("Admin is LOGgin with _type is not null");
                             switch (_type) {
                                 case ATTRIBUTE_EMAIL:
+                                    adminmasterbean = new AdminMasterBean();
+                                    adminmasterbean.setEmail_id(aEmail);
                                     LOG.info("Admin is logged with email id & call to isValidUserByEmail");
-                                    isValidUserName = adminInterface.isValidAdminEmailId(aEmail);
-                                    if (isValidUserName) {
+                                    result = adminInterface.isValidAdminEmailId(adminmasterbean);
+                                    if (result) {
                                         LOG.info("Admin is verified with database and it's valid");
                                         try {
                                             LOG.info("call to findUserByEmail");
-                                            adminAttributes = adminInterface.findUserByEmail(aEmail);
+                                            adminmasterbean = new AdminMasterBean();
+                                            adminmasterbean.setEmail_id(aEmail);
+                                           AdminMasterBean adminbean = adminInterface.getAdminEmailId(adminmasterbean);
                                             if (adminAttributes != null) {
                                                 LOG.info("userAttributes is not null");
-                                                String admin_password = adminAttributes.get("admin_password");
-                                                String admin_unique_name = adminAttributes.get("admin_unique_id");
-                                                String admin_fname = adminAttributes.get("admin_fname");
+                                                String admin_password = adminbean.getAdmin_password();
+                                                String admin_unique_name = adminbean.getAdmin_unique_id();
+                                                String admin_fname = adminbean.getAdmin_first_name();
                                                 if (null != admin_password && !admin_password.isEmpty()) {
                                                     LOG.info("admin_password is not null or empty");
                                                     if (admin_password.equals(aPassword)) {
@@ -147,12 +153,12 @@ public class AdminController extends HttpServlet {
                                     break;
                                 case ATTRIBUTE_MOBILE:
                                     LOG.info("Admin is trying to LOGin with ATTRIBUTE_MOBILE username , Now call to isValidUserByMobile function");
-                                    isValidUserName = adminInterface.isValidUserByMobile(aEmail);
+                                    isValidUserName = adminInterface.isValidAdminPhoneNo(aEmail);
                                     if (isValidUserName == true) {
                                         LOG.info("UserName is validated with db");
                                         try {
                                             LOG.info("findUserByMobile method is called");
-                                            adminAttributes = adminInterface.findUserByMobile(aEmail);
+                                            adminAttributes = adminInterface.getAdminPhoneNo(aEmail);
                                             if (adminAttributes != null) {
                                                 LOG.info("adminAttribute object is got from the database and it's not null");
                                                 String admin_password = adminAttributes.get("admin_password");

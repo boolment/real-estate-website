@@ -23,7 +23,7 @@ public interface AdminInterface {
 
     public Long getAdminCount();
 
-    public String getAdminEmailId(AdminMasterBean adminmasterbean);
+    public AdminMasterBean getAdminEmailId(AdminMasterBean adminmasterbean);
 
     public boolean isValidAdminEmailId(AdminMasterBean adminmasterbean);
 
