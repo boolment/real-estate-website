@@ -17,6 +17,8 @@ public interface PromoInterface {
 
     public List<PromoMasterBean> getAllPromoCode();
 
+    public List<PromoMasterBean> getAllPromoCodeReport(PromoMasterBean promomasterbean);
+
     public Long getAllPromoCount();
 
     public boolean approvePromoCode(PromoMasterBean promomasterbean);

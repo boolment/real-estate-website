@@ -10,8 +10,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 public class PromoImpl implements PromoInterface {
@@ -401,6 +404,108 @@ public class PromoImpl implements PromoInterface {
             }
         }
         return promomasterbean;
+    }
+
+    @Override
+    public List<PromoMasterBean> getAllPromoCodeReport(PromoMasterBean promomasterbean) {
+        LOG.info("getAllPromoCodeReport method is called");
+        EmailSend sending = new EmailSend();
+        StringWriter errors = new StringWriter();
+        ArrayList returnlist = new ArrayList();
+        String query;
+        PreparedStatement pstmt = null;
+        Connection conn = null;
+        String pattern = "yyyy/mm/dd";
+        String pattern2 = "dd/MMM/yyyy";
+        Date date;
+        try {
+            conn = DBConnect.getDBConnection();
+            LOG.info("DB connection establised ");
+        } catch (Exception e) {
+            LOG.error("Exception occured during get connection from db");
+            e.printStackTrace(new PrintWriter(errors));
+            sending.emailSending("Exception from  getAllPromoCodeReport method in PromoImpl Class " + errors.toString());
+        }
+        query = "select promo_id, promo_code, promo_discount_price, promo_start_date, promo_end_date, promo_creator_id, promo_creation_date, promo_status from promo_master WHERE DATE(promo_creation_date)>=? AND DATE(promo_creation_date)<=?";
+        try {
+            LOG.info("Todate is :" + promomasterbean.getPromo_start_date());
+            LOG.info("FromDate is :" + promomasterbean.getPromo_end_date());
+            if (conn != null) {
+                SimpleDateFormat format = new SimpleDateFormat(pattern);
+                SimpleDateFormat format2 = new SimpleDateFormat(pattern2);
+                LOG.info("Connection is not null");
+                pstmt = conn.prepareStatement(query);
+                LOG.info("Query is set into the preparedStatement");
+                LOG.info("FromDate:" + promomasterbean.getPromo_end_date() + "ToDate:" + promomasterbean.getPromo_start_date());
+                pstmt.setString(1, promomasterbean.getPromo_end_date());
+                pstmt.setString(2, promomasterbean.getPromo_start_date());
+                ResultSet result = pstmt.executeQuery();
+                LOG.info("ResultSet is got successfully" + result);
+                while (result.next()) {
+                    PromoMasterBean promomasterrbean = new PromoMasterBean();
+                    promomasterrbean.setPromo_id(result.getInt("promo_id"));
+                    LOG.info("promo_id:" + result.getInt("promo_id"));
+                    promomasterrbean.setPromo_code(result.getString("promo_code"));
+                    LOG.info("promo_code:" + result.getString("promo_code"));
+                    promomasterrbean.setPromo_discount_price(result.getString("promo_discount_price"));
+                    LOG.info("promo_discount_price:" + result.getString("promo_discount_price"));
+                    promomasterrbean.setPromo_start_date(result.getString("promo_start_date"));
+                    LOG.info("promo_start_date:" + result.getString("promo_start_date"));
+                    promomasterrbean.setPromo_end_date(result.getString("promo_end_date"));
+                    LOG.info("promo_end_date:" + result.getString("promo_end_date"));
+                    promomasterrbean.setPromo_creator_id(result.getString("promo_creator_id"));
+                    LOG.info("promo_creator_id:" + result.getString("promo_creator_id"));
+                    promomasterrbean.setPromo_creation_date(result.getString("promo_creation_date"));
+                    LOG.info("promo_creation_date :" + result.getString("promo_creation_date"));
+                    promomasterrbean.setPromo_status(result.getString("promo_status"));
+                    LOG.info("promo_status :" + result.getString("promo_status"));
+                    date = format.parse(result.getString("promo_creation_date"));
+                    String strDate = format2.format(date);
+                    LOG.info("Coupan Creationdate is :" + strDate);
+                    promomasterrbean.setPromo_creation_date(strDate);
+                    LOG.info("Coupan CreationDate:" + strDate);
+                    returnlist.add(promomasterrbean);
+                }
+                result.close();
+                LOG.info("ResultSet is closed successfully");
+            } else {
+                LOG.info("Prepared Statement is not confirugred properly & Unable to connect from database !!!");
+                sending.emailSending("Prepared Statement is not confirugred properly & Unable to connect from database !!!");
+            }
+
+        } catch (SQLException e) {
+            LOG.error("Exception from  getAllPromoCodeReport mthod in PromoImpl Class" + e);
+            e.printStackTrace(new PrintWriter(errors));
+            sending.emailSending("Exception from  getAllPromoCodeReport mthod in PromoImpl Class " + errors.toString());
+
+        } catch (java.text.ParseException ex) {
+            // java.util.logging.Logger.getLogger(StaffImpl.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                    LOG.info("PreparedStatement is closed successfully");
+                }
+                if (conn != null) {
+                    conn.close();
+                    LOG.info("Connection is closed successfully");
+                }
+            } catch (SQLException e) {
+
+                LOG.error("SQLException in closing prepareStatement and connection in ActivateUser method" + e);
+                e.printStackTrace(new PrintWriter(errors));
+                sending.emailSending("SQLException from  getAllPromoCodeReport mthod in PromoImpl Class " + errors.toString());
+            } catch (Exception e) {
+
+                LOG.error("Exception in closing prepareStatement and connection in getAllPromoCodeReport method");
+                e.printStackTrace(new PrintWriter(errors));
+                sending.emailSending("Exception from  getAllPromoCodeReport mthod in PromoImpl Class" + errors.toString());
+            }
+        }
+        if (0 != returnlist.size()) {
+            LOG.info("Size of the arraylist is :" + returnlist.size());
+        }
+        return returnlist;
     }
 
 }

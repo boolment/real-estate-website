@@ -44,4 +44,9 @@ public interface OwnerInterface {
     public String getOwnerOTP(OwnerMasterBean ownermasterbean);
 
     public boolean setOwnerOTP(OwnerMasterBean ownermasterbean);
+
+    public OwnerMasterBean isValidOwnerByPhoneNo(OwnerMasterBean ownermasterbean);
+
+    public OwnerMasterBean isValidOwnerByEmailId(OwnerMasterBean ownermasterbean);
+
 }

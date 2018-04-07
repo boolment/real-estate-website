@@ -5,22 +5,22 @@ $(document).ready(function(){
     });
     
    
-    $.ajax({
-        type: 'post',
-        url: "../PromoController.do",
-        data: {'action': 'isValidPromoCode'},
-        dataType: "json",
-        restful: true,
-        cache: false,
-        timeout: 20000,
-        async: true,
-        success: function (data) {
-
-        },
-        error: function () {
-
-        }
-    });
+//    $.ajax({
+//        type: 'post',
+//        url: "../PromoController.do",
+//        data: {'action': 'isValidPromoCode'},
+//        dataType: "json",
+//        restful: true,
+//        cache: false,
+//        timeout: 20000,
+//        async: true,
+//        success: function (data) {
+//
+//        },
+//        error: function () {
+//
+//        }
+//    });
  
     
  /*Start of coupan view */
@@ -544,216 +544,91 @@ $("#mytable #checkall").click(function () {
     });
     /*End of admin signin area*/
 
-    /*Start of admin forgot password*/
-    $("#forgotLink").click(function () {
-        $("#siginDiv").hide();
-        $("#forgotDiv").show();
-    });
-    $("#adminSendOTP").click(function () {
-        var forogotemail = $("#forogotemail").val();
-        if (typeof forogotemail === 'undefined' || !forogotemail)
-        {
-            $("#errorForgotPassword").css("display=block");
-            $("#errorForgotPassword").html("Please enter the Email address");
-            $("#errorForgotPassword").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorForgotPassword").slideUp(1000);
+       /*Start of owner signin area*/
+    $("#ownerSignIn").click(function () {
+        alert("called");
+        $('input[type="text"]').each(function () {
+            $(this).css({
+                "border": "",
+                "background": ""
             });
-            $("#forogotemail").focus();
-            return;
-        } else if (validateEmail(forogotemail) === false) {
-            $("#errorForgotPassword").css("display =block");
-            $("#errorForgotPassword").html("Please enter the valid Mail Id eg. info@webhosting.com");
-            $("#errorForgotPassword").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorForgotPassword").slideUp(1000);
-            });
-            $("#forogotemail").focus();
-            return;
-        }
-        $.ajax({
-            type: "post",
-            url: "../AdminController.do",
-            data: {'emailId': forogotemail},
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                if (data.message === "success")
-                {
-                    $("#forgotPasswordOTP").show();
-                    $("#forgotDiv").hide();
-                    $("#siginDiv").hide();
-                } else {
-                    if (document.getElementById('errorForgotPassword').style.display === 'none') {
-                        document.getElementById('errorForgotPassword').style.display = 'block';
-                        document.getElementById("errorForgotPassword").innerHTML = data.message;
-                    } else
-                    {
-                        document.getElementById("errorForgotPassword").innerHTML = data.message;
-                    }
-                }
-            },
-            error: function () {
-                if (document.getElementById('errorForgotPassword').style.display === 'none') {
-                    $("#errorForgotPassword").css("display =block");
-                    $("#errorForgotPassword").html("Something went wrong. Please try after some time!");
-                } else
-                {
-                    $("#errorForgotPassword").html("Something went wrong. Please try after some time!");
-                }
-            }
         });
-    });
-    $("#otpSubmit").click(function () {
-        var emailId = $("#emailId").val();
-        if (typeof emailId === 'undefined' || !emailId)
+        var oEmail = $("#oEmail").val();
+        if (typeof oEmail === 'undefined' || !oEmail)
         {
-            $("#errorBus").css("display=block");
-            $("#errorBus").html("Please enter the emailid");
-            $("#errorBus").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorBus").slideUp(1000);
+            $("#ownerError").css("display =block");
+            $("#ownerError").html("Please enter the Mail Id.");
+            $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+                $("#ownerError").slideUp(1000);
             });
-            $("#emailId").focus();
-            return;
-        } else if (validateEmail(emailId) === false) {
-            $("#errorBus").css("display =block");
-            $("#errorBus").html("Please enter the valid Mail Id eg. info@webhosting.com");
-            $("#errorBus").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorBus").slideUp(1000);
+            $('#oEmail').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+            return false;
+        } else if (validateEmail(oEmail) === false) {
+            $("#ownerError").css("display =block");
+            $("#ownerError").html("Please enter the valid Mail Id eg. info@webhosting.com");
+            $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+                $("#ownerError").slideUp(1000);
             });
-            $("#emailId").focus();
-            return;
+            $('#oEmail').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+            return false;
+        } else
+        {
+            $('#oEmail').css({"border": "", "background": ""});
         }
-        var otp = $("#otp").val();
-        if (typeof otp === 'undefined' || !otp)
+        var oPassword = $("#oPassword").val();
+        if (typeof oPassword === 'undefined' || !oPassword)
         {
-            $("#errorBus").css("display=block");
-            $("#errorBus").html("Please enter the OTP");
-            $("#errorBus").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorBus").slideUp(1000);
+            $("#ownerError").css("display =block");
+            $("#ownerError").html("Please enter the Password.");
+            $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+                $("#ownerError").slideUp(1000);
             });
-            $("#otp").focus();
-            return;
-        }
-        var newpassword = $("#newpassword").val();
-        if (typeof newpassword === 'undefined' || !newpassword)
+            $('#oPassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+            return false;
+        } else
         {
-            $("#errorBus").css("display=block");
-            $("#errorBus").html("Please enter the New Password");
-            $("#errorBus").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorBus").slideUp(1000);
-            });
-            $("#newpassword").focus();
-            return;
-        } else if (newpassword.length < 6)
-        {
-            $("#errorBus").css("display =block");
-            $("#errorBus").html("Please enter the Password at least 6 digits");
-            $("#errorBus").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorBus").slideUp(0);
-            });
-            $("#cnewpassword").focus();
-            return;
-        } else if (newpassword.length > 10)
-        {
-            $("#errorBus").css("display =block");
-            $("#errorBus").html("Please enter the Password less than 10 digits");
-            $("#errorBus").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorBus").slideUp(0);
-            });
-            $("#cnewpassword").focus();
-            return;
-        }
-        var confirmnewpassword = $("#confirmnewpassword").val();
-        if (typeof confirmnewpassword === 'undefined' || !confirmnewpassword)
-        {
-            $("#errorBus").css("display=block");
-            $("#errorBus").html("please enter the Confirm Password");
-            $("#errorBus").fadeTo(2000, 1000).slideUp(1000, function () {
-                $("#errorBus").slideUp(1000);
-            });
-            $("#confirmnewpassword").focus();
-            return;
+            $('#oPassword').css({"border": "", "background": ""});
         }
         $.ajax({
-            type: "post",
-            url: "../AdminController.do",
-            data: {'emailId': emailId, 'otp': otp, 'newpassword': newpassword, 'confirmnewpassword': confirmnewpassword},
-            dataType: 'json',
-            cache: false,
-            success: function (data) {
-                if (data.message === "success")
-                {
-                    window.location.href = data.url;
-                } else {
-                    if (document.getElementById('errorBus').style.display === 'none') {
-                        document.getElementById('errorBus').style.display = 'block';
-                        document.getElementById("errorBus").innerHTML = data.message;
-                    } else
-                    {
-                        document.getElementById("errorBus").innerHTML = data.message;
-                    }
-                }
-            },
-            error: function () {
-                if (document.getElementById('errorBus').style.display === 'none') {
-                    $("#errorBus").css("display =block");
-                    $("#errorBus").html("Something went wrong. Please try after some time!");
-                } else
-                {
-                    $("#errorBus").html("Something went wrong. Please try after some time!");
-                }
-            }
-        });
-    });
-    $("#resendOTP").click(function () {
-        $.ajax({
-            type: 'post',
-            url: '../AdminController.do',
-            data: {'action': 'ResendOtp'},
-            dataType: "json",
+            type: "POST",
+            url: '../OwnerController.do',
+            data: {'action': 'aSignIn', 'oEmail': oEmail, 'oPassword': oPassword},
+            datatype: "json",
             restful: true,
             cache: false,
             timeout: 20000,
             async: true,
             success: function (data) {
                 if (data.message === "success") {
-                    if (document.getElementById('successBusiness').style.display === 'none') {
-                        document.getElementById('successBusiness').style.display = 'block';
-                        document.getElementById("successBusiness").innerHTML = data.message;
-                    } else
-                    {
-                        document.getElementById("successBusiness").innerHTML = data.message;
-                    }
-                    $("#successBusiness").fadeTo(2000, 1000).slideUp(1000, function () {
-                        $("#successBusiness").slideUp(1000);
-                    });
+                    window.location.href = data.url;
                 } else {
-                    if (document.getElementById('errorBusiness').style.display === 'none') {
-                        document.getElementById('errorBusiness').style.display = 'block';
-                        document.getElementById("errorBusiness").innerHTML = data.message;
+                    if (document.getElementById('ownerError').style.display === 'none') {
+                        document.getElementById('ownerError').style.display = 'block';
+                        document.getElementById("ownerError").innerHTML = data.message;
                     } else
                     {
-                        document.getElementById("errorBusiness").innerHTML = data.message;
+                        document.getElementById("ownerError").innerHTML = data.message;
                     }
-                    $("#errorBusiness").fadeTo(2000, 1000).slideUp(1000, function () {
-                        $("#errorBusiness").slideUp(1000);
+                    $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+                        $("#ownerError").slideUp(1000);
                     });
                 }
             },
             error: function () {
-                if (document.getElementById('errorBusiness').style.display === 'none') {
-                    $("#errorBusiness").css("display =block");
-                    $("#errorBusiness").html("Something went wrong. Please try after some time!");
+                if (document.getElementById('ownerError').style.display === 'none') {
+                    $("#ownerError").css("display =block");
+                    $("#ownerError").html("Something went wrong. Please try after some time!");
                 } else
                 {
-                    $("#errorBusiness").html("Something went wrong. Please try after some time!");
+                    $("#ownerError").html("Something went wrong. Please try after some time!");
                 }
-                $("#errorBusiness").fadeTo(2000, 1000).slideUp(1000, function () {
-                    $("#errorBusiness").slideUp(1000);
+                $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#ownerError").slideUp(1000);
                 });
             }
         });
     });
-    /*End of forgot password admin*/
+    /*End of owner signin area*/
 
 
     

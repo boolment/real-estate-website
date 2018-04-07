@@ -75,7 +75,7 @@
                                         <th>Code</th>                                  
                                         <th>Start Date</th>
                                         <th>Expiry Date</th>
-                                        <th>Condition</th>
+                                        <th>Creator Id</th>
                                         <th>Discount</th>
                                         <th>Creation Date</th>
                                         <th>Status</th>
@@ -83,10 +83,10 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                       <th>Code</th>                                  
+                                        <th>Code</th>                                  
                                         <th>Start Date</th>
                                         <th>Expiry Date</th>
-                                        <th>Condition</th>
+                                        <th>Creator Id</th>
                                         <th>Discount</th>
                                         <th>Creation Date</th>
                                         <th>Status</th>
@@ -113,7 +113,7 @@
                                 $.ajax({
                                     type: 'POST',
                                     url: '../PromoController.do',
-                                    data: {'todate': todate, 'fromdate': fromdate},
+                                    data: {'action': 'getAllPromoCodeReport', 'todate': todate, 'fromdate': fromdate},
                                     dataType: "json",
                                     restful: true,
                                     cache: false,
@@ -128,13 +128,13 @@
                                             jQuery(data.Excel).each(function (i, item) {
                                                 console.log(item.UserId, item.First_Name, item.Email, item.Phone_No);
                                                 $('#example').DataTable().row.add([
-                                                    item.coupan_code,
-                                                    item.coupan_start_date,
-                                                    item.coupan_expire_date,
-                                                    item.coupen_condition,
-                                                    item.coupan_discount,
-                                                    item.coupan_creation_date_and_time,
-                                                    item.coupan_status,
+                                                    item.promo_code,
+                                                    item.promo_start_date,
+                                                    item.promo_end_date,
+                                                    item.promo_creator_id,
+                                                    item.promo_discount_price,
+                                                    item.promo_creation_date,
+                                                    item.promo_status,
                                                 ]).draw(false);
                                             });
                                             if (data.Excel.length !== 0)
