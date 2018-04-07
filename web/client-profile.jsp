@@ -84,6 +84,9 @@
                                             <label for="mnumber" class="control-label">About Me</label>
                                             <textarea  class="form-control"></textarea>
                                         </div>
+                                        <div class="form-group addPropBtn">
+                                            <button class="btn btn-success">Save Profile</button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
