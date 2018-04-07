@@ -3,6 +3,9 @@
 #99a1b6
 f8f9faa1
 */
+
+
+
 ul{
     list-style: none;
     margin: 0;
@@ -17,6 +20,7 @@ a:active{
 body{
     overflow-x: hidden;
     overflow-y: auto;
+    
 }
 
 input[type=number]::-webkit-inner-spin-button, 
@@ -558,42 +562,29 @@ footer ul li a{
     display: block;
     background-color: rgba(26,29,31,0.70);
 }
-
 #page2Header h1{
     color: #fff;
     text-transform: uppercase;
     font-size: 40px;   
 }
-
-
-
 #recentadded h3{
     font-size: 18px;
-    
     text-align: center;
     margin-bottom: 20px;
     padding: 10px 0;
     text-transform: uppercase;
-    border-bottom: 1px solid #ccc;
-    
-    
+    border-bottom: 1px solid #ccc;   
 }
-
-#recentadded .recentBorder{
-    
+#recentadded .recentBorder{   
     padding: 10px 0 !important;
 }
-
 #recentadded .col-md-4{
     padding-right: 0;
 }
-
 #recentadded h5{
     font-size: 12px;
     margin-bottom: 0px;
-    padding: 0 0 3px 0;
-    
-    
+    padding: 0 0 3px 0;    
 }
 #recentadded h6{
     font-size: 12px;
@@ -607,30 +598,21 @@ footer ul li a{
     margin-bottom: 5px;
     display: inline-block;
 }
-
-
 #allPropList{
 /*    padding: 10px;*/
     margin-top: 40px;
     background: #fcfcfc;
     width: 100% !important;
 }
-
 #allPropList .container-fluid{
      background-color: #fff;
      padding: 40px 10px;
      width: 98% !important;
-     border: 1px solid #eee;
-     
+     border: 1px solid #eee;    
 }
-
 .bodyAllPropList .row{
-    margin-bottom: 30px;
-   
-   
+    margin-bottom: 30px;  
 }
-
-
 .propDiv{
     background-color: #fcfcfc;
     border: 1px solid #eee;
@@ -788,4 +770,65 @@ footer ul li a{
 }
 .filter-search:hover{
     opacity: .9;
+}
+
+
+
+
+
+/*thrid page layout*/
+
+#viewFullProp{
+    background-image: url(../images/6601c80f-f187-4fb5-b758-cfb87104f41c.jpg);
+}
+
+#viewFullProp{
+    position: relative;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 60%;
+    
+    height: 60vh;
+}
+
+
+#viewFullBody .container-fluid{
+    background-color: #fcfcfc ;
+    padding: 50px 20px;
+}
+
+.leftViewFullBody{
+    background-color: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 0 10px 1px #eee;
+}
+
+.leftViewFullBody h3{
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: uppercase;
+    padding: 0px 15px;
+}
+
+.viewPropDetails{
+    border-bottom: 1px solid #eee;
+}
+
+.viewPropDesc{
+    font-size: 14px;
+    padding: 10px 30px ;
+}
+
+
+
+.viewPropFeatures{
+    background-color: #f8f8f8;
+    padding: 30px;
+    border-top: 1px solid #eee;
+}
+
+.propFeatures{
+    background-color: #fff;
+    border-top: #000;
 }
