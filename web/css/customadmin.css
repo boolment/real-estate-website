@@ -1,0 +1,364 @@
+html,body{
+    font-family: "open sans","Helvetica",Helvetica,Arial,sans-serif;
+    background-color: #f3f3f4;
+    color:#676a6c;
+    height:100%;
+    
+}
+.container-fluid{
+    width: 100%;
+}
+.box {
+/*   border: 1px red dotted;  */
+}
+#side-menu {
+    background-color: #2f4050;
+    padding:0px;
+}
+#side-menu h1{
+    color: #1f3647;
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 25px;
+}
+#side-menu ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+#side-menu a {
+    padding: 12px 20px;
+    text-decoration: none;
+    color:#9fb1c2;
+    font-weight: bold;
+    font-size: 13px;
+    display: block;
+}
+#side-menu .glyphicon {
+    margin-right:6px;
+}
+#side-menu a:hover {
+    background-color: #293846;
+    color:#fff;
+    display: block;
+}
+#side-menu .active a {
+    color :#fff;
+    background-color: #293846
+}
+#side-menu .settings-btn{
+    background-color: #1ab394;
+}
+#side-menu .settings-btn a {
+    color:#fff;
+}
+#side-menu .settings-btn a:hover {
+    background-color: #1ab394
+}
+#side-menu .collapseable li {
+    padding-left: 20px;
+    padding-top: 5px;
+}
+#side-menu .collapseable a {
+    color:#9fb1c2;
+    font-size: 12px;
+    padding: 0px 10px;
+    text-decoration: none;
+    display: block;
+    
+}
+#side-menu .collapseable a:hover {
+    color: #fff;
+}
+#side-menu .collapseable {
+    border-left: 4px solid #1ab394;
+    background-color: #293846;
+}
+#side-menu .link>ul>li{
+    padding-bottom: 10px;
+}
+.display-table {
+    display: table;
+    padding: 0px;
+    height: 100%;
+}
+.display-table-row {
+    display: table-row;
+    height: 100%;
+}
+.display-table-cell {
+    display: table-cell;
+    float: none;
+    height: 100%;
+}
+.valign-top {
+    vertical-align: top;
+}
+.navbar-default {
+    background-color: #fff;
+}
+.navbar-default .navbar-toggle {
+    border-color: #1ab394;
+    background-color: #1ab394;
+}
+.navbar-default .icon-bar {
+    border: 1px white solid;
+}
+.navbar-default .navbar-toggle:hover {
+    background-color: #1ab394;
+}
+.navbar-default .navbar-toggle:focus{
+    background-color: #1ab394;
+}
+#nav-header{
+    background-color: #fff;
+    border-bottom: 1px solid #e7eaec;
+}
+#nav-header #header-search-field {
+    margin:8px;
+    padding: 10px;
+    vertical-align: center;
+    border: 0.5px solid #4990F0;
+    width: 640px;
+    outline: none;
+}
+#nav-header ul{
+    margin: 0px;
+    padding: 0px;
+    list-style:none;
+    color:#676a6c;
+}
+#nav-header ul li{
+   float:left;
+   margin-left: 15px;
+   padding:17px 0px;
+}
+#nav-header ul .glyphicon {
+   color:#676a6c; 
+}
+.label-message {
+    background-color: #1ab394;
+}
+#nav-header ul a {
+    text-decoration: none;
+}
+#nav-header #welcome {
+    margin-right: 10px;
+}
+#nav-header .logout {
+    color:#676a6c;
+}
+#nav-header ul .label {
+   position:absolute;
+   margin-top: -10px; 
+   margin-left: -5px;
+}
+#nav-header .fixed-width {
+    width: 35px;
+}
+
+/*================================New Article Page CSS ==========================*/
+#content {
+    margin: 20px 0px 50px 0px;
+    background-color: #fff;
+    border-top: 4px solid #e7eaec;
+}
+#content header {
+    border-bottom: 1px #f3f3f4 solid;
+    padding:10px 0px;
+}
+.page_title{
+    font-size: 14px;
+    font-weight: hold;
+    padding: 0px 0px 0px 20px;
+    margin: 0px;
+}
+.content-inner {
+    padding: 20px;
+}
+.nobhas{
+    font-size: 13px;
+    font-weight:normal;
+}
+.form-wrapper{
+    background-color: #eee;
+    padding: 20px;
+}
+.note-editable {
+    background-color: #fff;
+    
+}
+.chosen-container, .chosen-container-multi{
+    width: 100% !important;
+    
+}
+
+/*================================createCustomer Page CSS=======================*/
+#result{
+    color:red;
+}
+/*=============================Tag page css ===================================*/
+.dashboard-left-cell{
+    padding-right: 5px;
+    
+}
+.dashboard-right-cell{
+    padding-left: 5px;
+}
+.admin-content-con{
+    margin-top: 20px;
+    background-color: #fff;
+    border-top:4px #e7eaec solid;
+    padding:15px;
+}
+.admin-content-con h5 {
+    margin:0px;
+    padding-top:3px;
+}
+.admin-content-con header {
+    margin-bottom: 20px;
+    border-bottom: 1px #eee solid;
+    padding-bottom: 10px;
+}
+/*===========================End tag page css ================================*/
+
+/*=========================Settings page css =================================*/
+.settings-row{
+    border-bottom: 1px #eee solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.settings-row h3{
+    margin-bottom: 3px;
+    font-size: 16px;
+}
+.settings-row a {
+    color:#999;
+}
+@media(min-width:480px){
+    .small-input {
+        width: 80px;
+    }
+}
+/*==========================Billing Invoice Page CSS========================*/
+.height {
+    min-height: 200px;
+}
+
+.icon {
+    font-size: 47px;
+    color: #5CB85C;
+}
+
+.iconbig {
+    font-size: 77px;
+    color: #5CB85C;
+}
+/*=========================basket page css =================================*/
+.cart-sidebar {
+    width: 260px;
+    float: right;
+    padding-bottom: 10px;
+    
+}
+/*===========================MyBill.jsp=====================================*/
+.content-inner .btn{
+    padding: 3px 20px;
+    width: 100px;
+    height: 28px;
+    text-align: center;
+    border-radius:0px;
+    
+}
+/*===============================Ticket.jsp ================================*/
+.form-group{
+  font-weight: normal;
+}
+
+/*=============================New Domain.jsp===============================*/
+.input-group-addon{
+    background-color: #1ab394;
+    color:white;
+    
+}
+.input-group .form-control, .input-group-addon, .input-group-btn {
+    display: table-cell;
+    height: 45px;
+}
+/*========================================client.jsp=====================*/
+.tile{
+        padding: 12px 20px;
+    background-color: #f8f8f8;
+    border-right: 1px solid #ccc;
+}
+.tiles .tile a {
+    text-decoration: none;
+}
+.tile .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 48px;
+    line-height: 1;
+    color: #ccc;
+}
+.tile .stat {
+    margin-top: 20px;
+    font-size: 40px;
+    line-height: 1;
+}
+.tile .title {
+    font-weight: bold;
+    color: #888;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+.tiles .tile .highlight {
+    margin-top: 4px;
+    height: 2px;
+    border-radius: 2px;
+}
+.bg-color-blue {
+    background-color: #5bc0de;
+}
+.bg-color-green {
+    background-color: #5cb85c;
+}
+.bg-color-red {
+    background-color: #d9534f;
+}
+.bg-color-gold {
+    background-color: #f0ad4e;
+}
+.panel.panel-accent-gold {
+    border-top: 3px solid #f0ad4e;
+}
+/*=========================myProfile.jsp====================================*/
+.modal-footer .btn-color{
+        background-color: #1ab394;
+        color:white;
+        border-color: #1ab394;
+}
+/*=========================End settings page css ===========================*/
+
+
+/*=========================start of adminDashboard=========================*/
+.content.btn{
+    width: 300px;
+    height: 100px;
+}
+
+
+
+/*========================End of adminDashboard===========================*/
+#admin-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    background-color: #fff;
+    padding:10px;
+    font-size: 15px;
+    font-weight: 100;
+    color:#676a6c;
+    border-top: 1px solid #e7eaec;
+}
