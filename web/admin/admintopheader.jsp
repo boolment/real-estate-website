@@ -1,3 +1,11 @@
+<%
+    String admin_unique_id=(String)session.getAttribute("admin_unique_id");
+     String admin_fname=(String)session.getAttribute("admin_fname");
+    if(admin_unique_id==null)
+    {
+        response.sendRedirect(request.getContextPath()+"/index.jsp");
+    }
+%>
 <div class="row">
                         <header id="nav-header" class="clearfix">
                             <div class="col-md-5">

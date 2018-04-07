@@ -17,13 +17,13 @@ public interface AdminInterface {
 
     public List<AdminMasterBean> getAllAdmin();
 
-    public String getAdminUniueId(AdminMasterBean adminmasterbean);
+    public AdminMasterBean getAdminUniueId(AdminMasterBean adminmasterbean);
 
     public boolean isValidAmin(AdminMasterBean adminmasterbean);
 
     public Long getAdminCount();
 
-    public AdminMasterBean getAdminEmailId(AdminMasterBean adminmasterbean);
+    public String getAdminEmailId(AdminMasterBean adminmasterbean);
 
     public boolean isValidAdminEmailId(AdminMasterBean adminmasterbean);
 
@@ -42,4 +42,9 @@ public interface AdminInterface {
     public String getAdminOTP(AdminMasterBean adminmasterbean);
 
     public boolean setAdminOtp(AdminMasterBean adminmasterbean);
+
+    public AdminMasterBean isValidAdminByPhoneNo(AdminMasterBean adminmasterbean);
+
+    public AdminMasterBean isValidAdminByEmailId(AdminMasterBean adminmasterbean);
+
 }

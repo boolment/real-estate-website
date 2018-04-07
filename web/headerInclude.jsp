@@ -13,7 +13,7 @@
                         </div>
                         <div  class="rightSide clearfix">
                             <ul class="loginUL">
-                                <li><a href="admin/adminLogin.jspS"> <i class="icon-lock"></i> Login</a></li>
+                                <li><a href="admin/adminLogin.jsp"> <i class="icon-lock"></i> Login</a></li>
                                 <li><a href=""> <i class="icon-login"></i> Register</a></li>
                                 <li><a href="">Deals</a></li>
                             </ul>

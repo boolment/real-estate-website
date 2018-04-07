@@ -435,7 +435,6 @@ $("#mytable #checkall").click(function () {
                     {
                         document.getElementById("errorCoupanbus").innerHTML = jsonData.message;
                     }
-
                     $("#errorCoupanbus").fadeTo(2000, 1000).slideUp(1000, function () {
                         $("#errorCoupanbus").slideUp(1000);
                     });
@@ -459,6 +458,7 @@ $("#mytable #checkall").click(function () {
     
      /*Start of admin signin area*/
     $("#adminSignIn").click(function () {
+        alert("called");
         $('input[type="text"]').each(function () {
             $(this).css({
                 "border": "",
@@ -487,6 +487,7 @@ $("#mytable #checkall").click(function () {
         {
             $('#aEmail').css({"border": "", "background": ""});
         }
+        alert(aEmail);
         var aPassword = $("#aPassword").val();
         if (typeof aPassword === 'undefined' || !aPassword)
         {
@@ -501,6 +502,7 @@ $("#mytable #checkall").click(function () {
         {
             $('#aPassword').css({"border": "", "background": ""});
         }
+        alert("dgergerg");
         $.ajax({
             type: "POST",
             url: '../AdminController.do',
@@ -822,3 +824,11 @@ function coupanProfileBlock(dataItem)
 
 }
 /*End of coupan  block*/
+function validateEmail(email) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(email)) {
+        return true;
+    } else {
+        return false;
+    }
+}

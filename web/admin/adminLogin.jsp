@@ -19,7 +19,7 @@
 
                             <div class="form-group">
                                 <label for="inputEmail" class="control-label">Email Address</label>
-                                <input type="email" name="adminEmail" id="aEmail" placeholder="jhon@boolemt.com" class="form-control">
+                                <input type="email" name="adminEmail" id="aEmail" placeholder="jho@boolemt.com" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="clientPass" class="control-label">Password</label>
