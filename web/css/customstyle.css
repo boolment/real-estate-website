@@ -537,6 +537,78 @@ footer ul li a{
     margin: 30px auto 0 auto;
 }
 /*====================Index page single listing layout we have to shift to another page ========================*/
+
+
+#page2Header{
+    background-image: url(../images/2nd-page-header.jpg);
+    position: relative;
+    padding: 130px 0px 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+#page2Header:before{
+    position: absolute;
+    content: '';
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: rgba(26,29,31,0.70);
+}
+
+#page2Header h1{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 40px;   
+}
+
+
+
+#recentadded h3{
+    font-size: 18px;
+    
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    
+    
+}
+
+#recentadded .recentBorder{
+    
+    padding: 10px 0 !important;
+}
+
+#recentadded .col-md-4{
+    padding-right: 0;
+}
+
+#recentadded h5{
+    font-size: 12px;
+    margin-bottom: 0px;
+    padding: 0 0 3px 0;
+    
+    
+}
+#recentadded h6{
+    font-size: 12px;
+    font-weight: normal;
+}
+#recentadded span{
+    font-size: 12px;
+    background-color: #ec5963;
+    color: #fff;
+    padding: 4px 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+
 #allPropList{
 /*    padding: 10px;*/
     margin-top: 40px;
@@ -557,6 +629,7 @@ footer ul li a{
    
    
 }
+
 
 .propDiv{
     background-color: #fcfcfc;
@@ -667,41 +740,34 @@ footer ul li a{
     text-decoration: none;
     text-align: center;
     padding: 10px 40px;
-
 }
 /*searchBarSide*/
 
 .searchBarInclude{
-    margin-bottom: 20px;
+    margin-bottom: 20px;  
 }
-
-
 .searchBarInclude label{
     font-size: 13px;
     font-weight: bold;
     color: #999;
     margin-left: 5px;
 }
-
 .searchBarInclude h5{
     text-align: center;
     font-size: 18px;
     text-transform: uppercase;
     margin-bottom: 20px;
     border-bottom: 1px dashed #ccc;
-    padding:0 0 20px 0;
-    
+    padding:0 0 20px 0;   
 }
-
 .searchBarInclude select,
 .searchBarInclude input[type="number"],
 .searchBarInclude input[type="text"]
 {
     border-radius: 0;
-    outline:none;
-    
+    outline:none;   
 }
-
+#recentadded,
 .searchBarInclude{
     background-color: #fcfcfc;
     box-shadow: 0px 0px 6px 1px #ccc;
@@ -723,4 +789,3 @@ footer ul li a{
 .filter-search:hover{
     opacity: .9;
 }
-

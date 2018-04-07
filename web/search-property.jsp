@@ -37,26 +37,39 @@
         <!--SEO TAGS-->
     </head>
     <body>
-
         <%-- Including header Section --%>
         <%@include file="/headerInclude.jsp" %>
-
-       
-
+        
+        <section id="page2Header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h1>Search Your Best Fit Property </h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="sortBy">
+            <div class="container">
+                <div  class="row">
+                    <div class="col-sm-12">
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        
         
         
         <section id="allPropList">
             <div class="container-fluid">
                 <div class="row">
-                    
-                    <div class="col-sm-12 col-md-3">
-                        
+                    <div class="col-sm-12 col-md-4">
                         <%@include file="/searchBarSide.jsp" %>                      
-                        
-                    </div>
-                    
-                    
-                    <div class="col-sm-12 col-md-9">
+                        <%@include file="/recentAdded.jsp" %>                      
+                    </div>    
+                    <div class="col-sm-12 col-md-8">
                         <div class="bodyAllPropList">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
@@ -351,13 +364,8 @@
                 </div>
             </div>
         </section>
-
-        
-        
-      
         <!--include  footer-->
         <%@include file="/footer.jsp" %>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
