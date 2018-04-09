@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -55,8 +54,8 @@ public class PromoController extends HttpServlet {
             LOG.info("Action is retervied in the servelt :" + request.getParameter("action"));
             switch (request.getParameter("action")) {
                 case "addPromoCode":
-                    if (null != request.getParameter("code") && !request.getParameter("code").isEmpty()) {
-                        code = request.getParameter("code");
+                    if (null != request.getParameter("code") && !request.getParameter("code").trim().isEmpty()) {
+                        code = request.getParameter("code").trim();
                         LOG.info("Coupan Code  is retervied in the servlet :" + code);
                     } else {
                         jsonobject.put("message", "Please enter The Coupan Code!");
@@ -64,8 +63,8 @@ public class PromoController extends HttpServlet {
                         LOG.info("Coupan Code can't be empty or null");
                         return;
                     }
-                    if (null != request.getParameter("sdate") && !request.getParameter("sdate").isEmpty()) {
-                        sdate = request.getParameter("sdate");
+                    if (null != request.getParameter("sdate") && !request.getParameter("sdate").trim().isEmpty()) {
+                        sdate = request.getParameter("sdate").trim();
                         LOG.info("Start Date  is retervied in the servlet :" + sdate);
                     } else {
                         jsonobject.put("message", "Please enter The Start Date!");
@@ -74,8 +73,8 @@ public class PromoController extends HttpServlet {
                         return;
                     }
 
-                    if (null != request.getParameter("edate") && !request.getParameter("edate").isEmpty()) {
-                        edate = request.getParameter("edate");
+                    if (null != request.getParameter("edate") && !request.getParameter("edate").trim().isEmpty()) {
+                        edate = request.getParameter("edate").trim();
                         LOG.info("Expiry Date is retervied in the servlet :" + edate);
                     } else {
                         jsonobject.put("message", "Please enter The Expiry Date!");
@@ -83,8 +82,8 @@ public class PromoController extends HttpServlet {
                         LOG.info("Expiry Date can't be empty or null");
                         return;
                     }
-                    if (null != request.getParameter("discount") && !request.getParameter("discount").isEmpty()) {
-                        discount = request.getParameter("discount");
+                    if (null != request.getParameter("discount") && !request.getParameter("discount").trim().isEmpty()) {
+                        discount = request.getParameter("discount").trim();
                         LOG.info("Discount  is retervied in the servlet :" + discount);
                     } else {
                         jsonobject.put("message", "Please enter The Discount!");
@@ -92,7 +91,6 @@ public class PromoController extends HttpServlet {
                         LOG.info("Discount can't be empty or null");
                         return;
                     }
-
                     promomasterbean = new PromoMasterBean();
                     promomasterbean.setPromo_code(code);
                     promomasterbean.setPromo_start_date(sdate);
@@ -139,8 +137,8 @@ public class PromoController extends HttpServlet {
                     }
                     break;
                 case "updatePromoCode":
-                    if (null != request.getParameter("code") && !request.getParameter("code").isEmpty()) {
-                        code = request.getParameter("code");
+                    if (null != request.getParameter("code") && !request.getParameter("code").trim().isEmpty()) {
+                        code = request.getParameter("code").trim();
                         LOG.info("Coupan Code  is retervied in the servlet :" + code);
                     } else {
                         jsonobject.put("message", "Please enter The Coupan Code!");
@@ -148,8 +146,8 @@ public class PromoController extends HttpServlet {
                         LOG.info("Coupan Code can't be empty or null");
                         return;
                     }
-                    if (null != request.getParameter("sdate") && !request.getParameter("sdate").isEmpty()) {
-                        sdate = request.getParameter("sdate");
+                    if (null != request.getParameter("sdate") && !request.getParameter("sdate").trim().isEmpty()) {
+                        sdate = request.getParameter("sdate").trim();
                         LOG.info("Start Date  is retervied in the servlet :" + sdate);
                     } else {
                         jsonobject.put("message", "Please enter The Start Date!");
@@ -157,8 +155,8 @@ public class PromoController extends HttpServlet {
                         LOG.info("Start Date can't be empty or null");
                         return;
                     }
-                    if (null != request.getParameter("edate") && !request.getParameter("edate").isEmpty()) {
-                        edate = request.getParameter("edate");
+                    if (null != request.getParameter("edate") && !request.getParameter("edate").trim().isEmpty()) {
+                        edate = request.getParameter("edate").trim();
                         LOG.info("Expiry Date  is retervied in the servlet :" + edate);
                     } else {
                         jsonobject.put("message", "Please enter The Expiry Date!");
@@ -166,8 +164,8 @@ public class PromoController extends HttpServlet {
                         LOG.info("Expiry Date can't be empty or null");
                         return;
                     }
-                    if (null != request.getParameter("discount") && !request.getParameter("discount").isEmpty()) {
-                        discount = request.getParameter("discount");
+                    if (null != request.getParameter("discount") && !request.getParameter("discount").trim().isEmpty()) {
+                        discount = request.getParameter("discount").trim();
                         LOG.info("Discount  is retervied in the servlet :" + discount);
                     } else {
                         jsonobject.put("message", "Please enter The Discount!");
@@ -175,8 +173,8 @@ public class PromoController extends HttpServlet {
                         LOG.info("Discount can't be empty or null");
                         return;
                     }
-                    if (null != request.getParameter("coupanStatus") && !request.getParameter("coupanStatus").isEmpty()) {
-                        coupanStatus = request.getParameter("coupanStatus");
+                    if (null != request.getParameter("coupanStatus") && !request.getParameter("coupanStatus").trim().isEmpty()) {
+                        coupanStatus = request.getParameter("coupanStatus").trim();
                         LOG.info("Status  is retervied in the servlet :" + coupanStatus);
                     } else {
                         jsonobject.put("message", "Please enter The Status!");
@@ -205,8 +203,8 @@ public class PromoController extends HttpServlet {
                     break;
                 case "blockCoupan":
                     promomasterbean = new PromoMasterBean();
-                    if (null != request.getParameter("id") && !request.getParameter("id").isEmpty()) {
-                        promomasterbean.setPromo_id(Integer.parseInt(request.getParameter("id")));
+                    if (null != request.getParameter("id") && !request.getParameter("id").trim().isEmpty()) {
+                        promomasterbean.setPromo_id(Integer.parseInt(request.getParameter("id").trim()));
                         LOG.info("Coupan id is reterived in the controller :" + promomasterbean.getPromo_id());
                     } else {
                         jsonobject.put("message", "Coupan id is not retervied in the controller!");
@@ -227,8 +225,8 @@ public class PromoController extends HttpServlet {
                     break;
                 case "activeCoupan":
                     promomasterbean = new PromoMasterBean();
-                    if (null != request.getParameter("id") && !request.getParameter("id").isEmpty()) {
-                        promomasterbean.setPromo_id(Integer.parseInt(request.getParameter("id")));
+                    if (null != request.getParameter("id") && !request.getParameter("id").trim().isEmpty()) {
+                        promomasterbean.setPromo_id(Integer.parseInt(request.getParameter("id").trim()));
                         LOG.info("Coupan id is reterived in the controller :" + promomasterbean.getPromo_id());
                     } else {
                         jsonobject.put("message", "Coupan id is not retervied in the controller!");
@@ -260,8 +258,8 @@ public class PromoController extends HttpServlet {
                 case "getAllPromoCodeReport":
                     String war = "<span class=\"status text-warning\">&bull;</span>";
                     String sus = "<span class=\"status text-success\">&bull;</span>";
-                    if (null != request.getParameter("todate") && !request.getParameter("todate").isEmpty()) {
-                        promomasterbean.setPromo_start_date(request.getParameter("todate"));
+                    if (null != request.getParameter("todate") && !request.getParameter("todate").trim().isEmpty()) {
+                        promomasterbean.setPromo_start_date(request.getParameter("todate").trim());
                         LOG.info("ToDate is reterived :" + promomasterbean.getPromo_start_date());
                     } else {
                         jsonobject.put("message", "Please select specific To Date");
@@ -269,8 +267,8 @@ public class PromoController extends HttpServlet {
                         LOG.info("Todate is empty or null");
                         return;
                     }
-                    if (null != request.getParameter("fromdate") && !request.getParameter("fromdate").isEmpty()) {
-                        promomasterbean.setPromo_end_date(request.getParameter("fromdate"));
+                    if (null != request.getParameter("fromdate") && !request.getParameter("fromdate").trim().isEmpty()) {
+                        promomasterbean.setPromo_end_date(request.getParameter("fromdate").trim());
                         LOG.info("ToDate is reterived :" + promomasterbean.getPromo_end_date());
                     } else {
                         jsonobject.put("message", "Please select specific From Date");
@@ -286,7 +284,7 @@ public class PromoController extends HttpServlet {
                         LOG.info("Size of the Arraylist is :" + list.size());
                         session.setAttribute("coupanlist", list);
                         Iterator itr = list.iterator();
-                        JSONObject promoJSON =null;
+                        JSONObject promoJSON;
                         while (itr.hasNext()) {
                             promoJSON= new JSONObject();
                             promomasterbean = (PromoMasterBean) itr.next();

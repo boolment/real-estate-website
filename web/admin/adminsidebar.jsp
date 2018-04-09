@@ -17,12 +17,21 @@
                 <li><a href="#">View All Customer</a></li>
             </ul>
         </li>
+                <li class="link">
+            <a href="#collapse-owner" data-toggle="collapse" aria-controls="collapse-owner">
+                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                <span class="hidden-xs hidden-sm">Owner Management</span>                                
+            </a>
+            <ul class="collapse collapseable" id="collapse-owner">
+                <li><a href="viewAllOwner.jsp">View All Owner</a></li>
+            </ul>
+        </li>
         <li class="link">
-            <a href="#collapse-staff" data-toggle="collapse" aria-controls="collapse-staff">
+            <a href="#collapse-room" data-toggle="collapse" aria-controls="collapse-room">
                 <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
                 <span class="hidden-xs hidden-sm">Room Management</span>
             </a>
-            <ul class="collapse collapseable" id="collapse-staff">
+            <ul class="collapse collapseable" id="collapse-room">
                 <li>
                     <a href="#">Add New Room
                         <span class="label label-warning pull-right hidden-sm hidden-xs">10</span>

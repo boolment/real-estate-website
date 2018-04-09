@@ -58,7 +58,7 @@
                                     <div id="msgalert"></div>
                                     <div class="form-group">
                                         <label for="email-id" class="control-label">email ID<span class="red">*</span></label>
-                                        <input type="email" name="emailID" id="emailId" value=""  class="form-control" >
+                                        <input type="email" name="emailID" id="emailId" value=""  class="form-control" readonly="true" >
                                     </div>
                                     <div class="form-group">
                                         <label for="business-name" class="control-label">OTP<span class="red">*</span></label>
