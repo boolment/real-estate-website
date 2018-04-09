@@ -3,7 +3,9 @@
     <head>
         <title></title>
         <!--ALL CSS FILES-->
+        
         <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css">
         <link href="css/simple-line-icons.css" rel="stylesheet" type="text/css">
         <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css">
@@ -105,6 +107,7 @@
                     </div>
                     <div class="col-sm-12 col-md-4">
                         <div class="rightViewFullBody">
+                            <%@include file="/bookNowInclude.jsp" %>
                         </div>
                     </div>
                 </div>
@@ -119,6 +122,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/owl.carousel.min.js" type="text/javascript"></script>
         <script src="js/customscript.js" type="text/javascript"></script>

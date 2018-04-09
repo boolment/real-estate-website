@@ -801,19 +801,15 @@ footer ul li a{
     height: 200px;
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, transparent), color-stop(100%, rgba(0,0,0,0.57)));
 }
-
 #viewFullBody .container-fluid{
     background-color: #fcfcfc ;
     padding: 25px 20px;
 }
-
 .leftViewFullBody{
     background-color: #fff;
     border: 1px solid #eee;
     box-shadow: 0 0 10px 1px #eee;
 }
-
-
 .leftViewFullBody ul{
     /*    padding: 0;*/
 }
@@ -831,22 +827,17 @@ footer ul li a{
     padding: 0px 15px;
     margin-top: 20px;
 }
-
 #viewFullProp{
     position: relative;
 }
-
 .headerInfo{
     position: absolute;
     bottom: 20px;
     left: 10%;
     color: #fff;
 }
-
 .headerInfo .viewPropAddress{
-    
 }
-
 .headerInfo h1{
     font-size: 28px;
     color: #fff;
@@ -859,7 +850,6 @@ footer ul li a{
     margin-left: 10px;
     font-weight: bold;
 }
-
 .viewPropDetails{
     border-bottom: 1px solid #eee;
 }
@@ -870,22 +860,17 @@ footer ul li a{
     border-bottom:  1px solid #eee;
     background-color: #fff;
 }
-
 .viewPropDesc ul li{
     margin-bottom: 10px;
     /*    padding: 10px 0;*/
 }
-
 .viewPropDesc ul li:before{
     content: "\f058";
     font-family: 'FontAwesome';
     margin-right: 5px;
     font-size: 18px;
     color: #ec5963;
-
 }
-
-
 .viewPropDesc p{    
     padding:15px 40px;
 }
@@ -899,3 +884,161 @@ footer ul li a{
     padding: 30px;
     border-top: 1px solid #eee;    
 }
+.rightViewFullBody{   
+    position: relative;
+    /*    top: -50px;*/
+    margin-top: -50px;
+    background-color: #fff;
+    -webkit-transition: top .3s ease-in-out;
+    transition: top .3s ease-in-out;
+    box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.05), 0px 1px 10px 0px transparent;
+    -moz-box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2),0px 4px 5px 0px rgba(0,0,0,0.05),0px 1px 10px 0px transparent;
+}
+.bookNow{
+    padding: 20px;
+}
+.bookNow h3{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #48b39b;
+    border-bottom: 1px solid #48b39b;
+    padding: 0 0 30px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.bookNow .refCode{
+    position: relative;
+    width: 100%;
+}
+.bookNow label{
+    color: #999;
+}
+.scheduleBtn{
+    background-color: #f25362;
+    border-color: #f25362;
+    padding: 9px 0;
+    font-weight: bold;
+    border-radius: 2px;
+    color: #fff;
+    width: 100%;
+    margin: 0 auto;
+    border: none;
+    outline: none;   
+    cursor: pointer;    
+}
+.bookNow .form-group{
+    margin-bottom: 2rem;
+}
+.bookNow .input-group-addon
+{
+    background-color: transparent;
+    border: none;
+}
+.bookNow input[type]
+{
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;   
+}
+.bookNow input[type='text']{
+    outline: none;    
+}
+.bookNow .form-control:focus{
+    border-color:#f25362;
+    box-shadow: none;
+}
+.refbtn{
+    background-color: #f25362;
+    color: #fff;
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 9px;
+    font-weight: bold;
+    font-size: 12px;
+    outline: none;
+    z-index: 999;
+    cursor: pointer;
+}
+
+/*login page*/
+
+#login-register{
+    background-color: #fcfcfc;
+    padding: 50px 100px;
+    border-bottom: 1px solid #eee;
+    color: #999;
+}
+#login-register .container{
+    background-color: #fff;
+    width: 70%;
+    margin: 0 auto;
+    padding: 30px;
+    box-shadow: 0px 0px 5px 1px #ccc;
+}
+
+
+#login-register h2{
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+
+}
+
+.WhyRegister{
+    /*    padding: 0 30px;*/
+}
+
+.WhyRegister span{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 5px;
+
+}
+
+.WhyRegister i{
+    font-size:20px;
+}
+
+.WhyRegister ul li{
+    margin-bottom: 10px;
+
+}
+
+
+.register{
+    position: relative;
+}
+
+.WhyRegister::after{
+    content: "";
+    display: block;
+    width: 3px;
+    background-color: #ec5963;
+    height: 100%;
+    position: absolute;
+    
+    top: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.register a
+.register a:hover,
+.register a:link,
+.register a:visited,
+.register a:active
+{
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #fff;
+}
+
