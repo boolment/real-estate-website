@@ -149,45 +149,57 @@
                                             </div>                                           
                                             <div id="collapse1" class="panel-collapse in active">
                                                 <div class="panel-body">
-                                                    <div id="errorCoupanbus" class="alert alert-danger" style="display:none"></div>
+                                                    <div id="errorOwner" class="alert alert-danger" style="display:none"></div>
                                                     <div id="successBusiness" class="alert alert-success" style="display:none"></div>                        
                                                     <div class="row">
                                                         <form   id="form1">
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
-                                                                    <label  class="control-label" for="ownerName">Coupan Code<span class="red">*</span></label>
-                                                                    <input type="text" placeholder="Code" id="ecode" name="ownerName" class="form-control" autocomplete="off" >
+                                                                    <label  class="control-label" for="ownerName">First Name <span class="red">*</span></label>
+                                                                    <input type="text" placeholder="First Name" id="fname" name="ownerName" class="form-control" autocomplete="off" >
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
-                                                                    <label  class="control-label" for="ownerName">Start Date<span class="red">*</span></label>
-                                                                    <input type="text" placeholder="Start Date" id="esdate" name="ownerName" class="form-control" autocomplete="off" >
+                                                                    <label  class="control-label" for="ownerName">Last Name<span class="red">*</span></label>
+                                                                    <input type="text" placeholder="Start Date" id="lname" name="ownerName" class="form-control" autocomplete="off" >
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
-                                                                    <label  class="control-label" for="ownerName">Expiry Date<span class="red">*</span></label>
-                                                                    <input type="text" placeholder="Expiry Date" id="eedate" name="ownerName" class="form-control" autocomplete="off" >
+                                                                    <label  class="control-label" for="ownerName">Mobile Number<span class="red">*</span></label>
+                                                                    <input type="text" placeholder="Expiry Date" id="mobno" name="ownerName" class="form-control" autocomplete="off" >
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
-                                                                    <label  class="control-label" for="ownerName">Discount<span class="red">*</span></label>
-                                                                    <input type="text" placeholder="Discount" id="ediscount" name="ownerName" class="form-control" autocomplete="off" >
+                                                                    <label  class="control-label" for="ownerName">Email Id<span class="red">*</span></label>
+                                                                    <input type="text" placeholder="Discount" id="emailId" name="ownerName" class="form-control" autocomplete="off" >
+                                                                </div>
+                                                            </div>
+                                                             <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                    <label  class="control-label" for="ownerName">Date Of Birth<span class="red">*</span></label>
+                                                                    <input type="text" placeholder="Discount" id="dob" name="ownerName" class="form-control" autocomplete="off" >
+                                                                </div>
+                                                            </div>
+                                                             <div class="col-md-5">
+                                                                <div class="form-group">
+                                                                    <label  class="control-label" for="ownerName">Address<span class="red">*</span></label>
+                                                                    <input type="text" placeholder="Discount" id="address" name="ownerName" class="form-control" autocomplete="off" >
                                                                 </div>
                                                             </div>
                                                                   <div class="col-md-5">
                                                                 <div class="form-group">
                                                                     <label  class="control-label" for="ownerName">Status<span class="red">*</span></label>
-                                                                    <select class="form-control required" id ="coupanStatus" name="dropdownlist">
+                                                                    <select class="form-control required" id ="ostatus" name="dropdownlist">
                                                                         <option value="">Select Status</option>
                                                                         <option value="Active">Active</option>
                                                                         <option value="Block">Block</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                                <input type="hidden" id="coupanId"/>
+                                                                <input type="hidden" id="ownerId"/>
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
                                                                 </div>
@@ -195,8 +207,8 @@
                                                             <div class="clearfix" style="height: 10px;clear: both;"></div>
                                                             <div class="form-group">
                                                                 <div class="col-lg-12">
-                                                                    <button class="btn btn-primary open1" id="editCoupanBasic" type="button"><i class="fa fa-arrow-right fa-1x"></i>Update</button>
-                                                                    <button class="btn btn-default open1" id="cancelCoupanupdate" type="button"><i class="fa fa-close fa-1x"></i>Cancel</button> 
+                                                                    <button class="btn btn-primary open1" id="editOwnerBasic" type="button"><i class="fa fa-arrow-right fa-1x"></i>Update</button>
+                                                                    <button class="btn btn-default open1" id="cancelOwnerupdate" type="button"><i class="fa fa-close fa-1x"></i>Cancel</button> 
                                                                 </div>
                                                             </div>
                                                         </form>

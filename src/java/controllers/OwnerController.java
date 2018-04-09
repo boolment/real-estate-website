@@ -354,6 +354,216 @@ public class OwnerController extends HttpServlet {
                         LOG.info("No Owner data is found in the database");
                     }
                     break;
+                case "blockOwner":
+                    ownermasterbean = new OwnerMasterBean();
+                    if (null != request.getParameter("id") && !request.getParameter("id").trim().isEmpty()) {
+                        ownermasterbean.setOwner_unique_id((request.getParameter("id").trim()));
+                        LOG.info("owner id is reterived in the controller :" + ownermasterbean.getOwner_unique_id());
+                    } else {
+                        jsonobject.put("message", "owner id is not retervied in the controller!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("owner id can't be empty or null");
+                        return;
+                    }
+                    ownermasterbean.setOwner_status("Block");
+                    boolean blockedResult = ownerInterface.blockOwner(ownermasterbean);
+                    if (blockedResult) {
+                        LOG.info("Owner is Blocked successfully");
+                        jsonobject.put("message", "success");
+                    } else {
+                        LOG.info("Owner Block is failed");
+                        jsonobject.put("message", "Something went wrong controller side");
+                        return;
+                    }
+                    break;
+                case "activeOwner":
+                    ownermasterbean = new OwnerMasterBean();
+                    if (null != request.getParameter("id") && !request.getParameter("id").trim().isEmpty()) {
+                        ownermasterbean.setOwner_unique_id((request.getParameter("id").trim()));
+                        LOG.info("owner id is reterived in the controller :" + ownermasterbean.getOwner_unique_id());
+                    } else {
+                        jsonobject.put("message", "owner id is not retervied in the controller!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("owner id can't be empty or null");
+                        return;
+                    }
+                    ownermasterbean.setOwner_status("Active");
+                    boolean activeResult = ownerInterface.blockOwner(ownermasterbean);
+                    if (activeResult) {
+                        LOG.info("Owner is Active successfully");
+                        jsonobject.put("message", "success");
+                    } else {
+                        LOG.info("Owner Active is failed");
+                        jsonobject.put("message", "Something went wrong controller side");
+                        return;
+                    }
+                    break;
+                case "updateOwner":
+                    if (null != request.getParameter("fname") && !request.getParameter("fname").isEmpty()) {
+                        ownermasterbean.setOwner_first_name(request.getParameter("fname"));
+                        LOG.info("Staff First Name  is retervied in the servlet :" + request.getParameter("fname"));
+                        String validate = _utility.validateString(request.getParameter("fname"));
+                        if (validate.equals(ATTRIBUTE_INVALIDSTRING)) {
+                            jsonobject.put("message", "Enter valid First Name!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Enter valid First Name");
+                            return;
+                        } else if (validate.equals(ATTRIBUTE_INVALIDLENGTH)) {
+                            jsonobject.put("message", "First Name can't be more than 20 characters!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("First Name can't be more than 20 characters");
+                            return;
+                        } else if (!validate.equals(ATTRIBUTE_VALIDSTRING)) {
+                            jsonobject.put("message", "Something went wrong. Please try after seomtime!!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Something went wrong from first name utility class");
+                            return;
+                        }
+                    } else {
+                        jsonobject.put("message", "Please enter The First Name!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff First Name can't be empty or null");
+                        return;
+                    }
+                    if (null != request.getParameter("lname") && !request.getParameter("lname").isEmpty()) {
+                        ownermasterbean.setOwner_last_name(request.getParameter("lname"));
+                        LOG.info("Staff Last Name  is retervied in the servlet :" + request.getParameter("lname"));
+                        String validate = _utility.validateString(request.getParameter("lname"));
+                        if (validate.equals(ATTRIBUTE_INVALIDSTRING)) {
+                            jsonobject.put("message", "Enter valid Last Name!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Enter valid Last Name");
+                            return;
+                        } else if (validate.equals(ATTRIBUTE_INVALIDLENGTH)) {
+                            jsonobject.put("message", "Last Name can't be more than 20 characters!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Last Name can't be more than 20 characters");
+                            return;
+                        } else if (!validate.equals(ATTRIBUTE_VALIDSTRING)) {
+                            jsonobject.put("message", "Something went wrong. Please try after seomtime!!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Something went wrong from Last name utility class");
+                            return;
+                        }
+                    } else {
+                        jsonobject.put("message", "Please enter The Last Name!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff Last Name can't be empty or null");
+                        return;
+                    }
+                    if (null != request.getParameter("mobno") && !request.getParameter("mobno").isEmpty()) {
+                        ownermasterbean.setOwner_phone_number(request.getParameter("mobno"));
+                        LOG.info("Staff phoneno. is retervied in the servlet :" + request.getParameter("mobno"));
+                        String _type = _utility.checkUserLoggedInWith(request.getParameter("mobno"));
+                        LOG.info("Phone No. checkUserLoggedInWith retrun value is :" + _type);
+                        if (!ATTRIBUTE_MOBILE.equals(_type)) {
+                            jsonobject.put("message", "Staff Mobile number is not valid.Please enter valid 10 digit number followed by 0 or +91");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Staff mobile number is not valid.Please enter valid 10 digit number");
+                            return;
+                        }
+                        boolean phoneValidate = false;
+                        if (phoneValidate == true) {
+                            jsonobject.put("message", "This phoneno already exist!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("This phoneno is already exist respective this");
+                            return;
+                        }
+                    } else {
+                        jsonobject.put("message", "Please enter staff phoneno!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff phoneno can't be empty or null!");
+                        return;
+                    }
+                    if (null != request.getParameter("emailId") && !request.getParameter("emailId").isEmpty()) {
+                        ownermasterbean.setOwner_email_id(request.getParameter("emailId"));
+                        LOG.info("mailId is not null or empty now call to checkUserLoggedInWith() method");
+                        String _type = _utility.checkUserLoggedInWith(request.getParameter("emailId"));
+                        LOG.info("mailId validation checked successfully----------:" + _type);
+                        if (!ATTRIBUTE_EMAIL.equals(_type)) {
+                            jsonobject.put("message", "Staff mailId format is not correct!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Staff mailId format is not correct");
+                            return;
+                        }
+                        boolean emailValidate = false;
+                        if (emailValidate == true) {
+                            jsonobject.put("message", "This mailid already exist!");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("This mailid is already exist in the database");
+                            return;
+                        }
+                        LOG.info("Staff Mail id  is retervied in the servlet :" + request.getParameter("emailId"));
+                    } else {
+                        jsonobject.put("message", "Please enter The Mail id!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff mail id can't be empty or null");
+                        return;
+                    }
+                    if (null != request.getParameter("dob") && !request.getParameter("dob").isEmpty()) {
+                       ownermasterbean.setOwner_date_of_birth(request.getParameter("dob"));
+                        LOG.info("Staff Age  is retervied in the servlet :" + request.getParameter("dob"));
+                    } else {
+                        jsonobject.put("message", "Please enter The Age!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff Age can't be empty or null");
+                        return;
+                    }
+                      if (null != request.getParameter("address") && !request.getParameter("address").isEmpty()) {
+                       ownermasterbean.setOwner_address_type(request.getParameter("address"));
+                        LOG.info("Staff Age  is retervied in the servlet :" + request.getParameter("address"));
+                    } else {
+                        jsonobject.put("message", "Please enter The Age!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff Age can't be empty or null");
+                        return;
+                    }
+                        if (null != request.getParameter("ostatus") && !request.getParameter("ostatus").isEmpty()) {
+                       ownermasterbean.se(request.getParameter("ostatus"));
+                        LOG.info("Staff Age  is retervied in the servlet :" + request.getParameter("ostatus"));
+                    } else {
+                        jsonobject.put("message", "Please enter The Age!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff Age can't be empty or null");
+                        return;
+                    }
+                    status = request.getParameter("status");
+                    jobprofile = request.getParameter("jobprofile");
+                    department = request.getParameter("department");
+                    if (null != request.getParameter("password") && !request.getParameter("password").isEmpty()) {
+                        password = request.getParameter("password");
+                        LOG.info("Password  is retervied in the servlet :" + password);
+                    } else {
+                        jsonobject.put("message", "Please enter The password!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Password can't be empty or null");
+                        return;
+                    }
+                    if (null != request.getParameter("sconfirmpassword") && !request.getParameter("sconfirmpassword").isEmpty()) {
+                        sconfirmpassword = request.getParameter("sconfirmpassword");
+                        LOG.info("Customer confirm password is retervied in the servlet :" + sconfirmpassword);
+                        if (!sconfirmpassword.equals(password)) {
+                            jsonobject.put("message", "Customer re-password doesn't match. Please enter password again.");
+                            response.getWriter().write(jsonobject.toString());
+                            LOG.info("Customer re-password doesn't match. Please enter password again.");
+                            return;
+                        } else {
+                        }
+                    } else {
+                        jsonobject.put("message", "Please confirm Staff password!");
+                        response.getWriter().write(jsonobject.toString());
+                        LOG.info("Staff repassword can't be empty or null");
+                        return;
+                    }
+
+                    result = staffInterface.addStaff(staffBean);
+                    if (result == true) {
+                        jsonobject.put("message", "success");
+                        LOG.info("staff account is created successfully");
+                    } else {
+                        LOG.info("staff account creation is failed");
+                    }
+                    break;
                 default:
                     jsonobject.put("message", "Username does not exist!");
                     LOG.info("Page is send redirect to the ownerManagement.jsp");

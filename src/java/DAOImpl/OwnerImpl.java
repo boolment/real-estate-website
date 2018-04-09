@@ -30,7 +30,63 @@ public class OwnerImpl implements OwnerInterface {
 
     @Override
     public boolean blockOwner(OwnerMasterBean ownermasterbean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+ LOG.info("blockOwner method is called");
+        EmailSend sending = new EmailSend();
+        StringWriter errors = new StringWriter();
+        String query;
+        boolean result = false;
+        PreparedStatement pstmt = null;
+        Connection conn = null;
+        try {
+            conn = DBConnect.getDBConnection();
+            LOG.info("Connection establishment successfully with database in blockOwner method");
+        } catch (Exception e) {
+            LOG.error("Connection establishment failed with database in blockOwner method", e);
+
+            e.printStackTrace(new PrintWriter(errors));
+            sending.emailSending("Exception from  blockOwner method in OwnerImpl Class " + errors.toString());
+        }
+        query = "update owner_master set owner_status=? where owner_unique_id=?";
+        try {
+            if (conn != null) {
+                LOG.info("Connection is establisehd and before prepareStatement");
+                pstmt = conn.prepareStatement(query);
+                pstmt.setString(1, ownermasterbean.getOwner_status());
+                pstmt.setString(2, ownermasterbean.getOwner_unique_id());
+                int status = pstmt.executeUpdate();
+                if (status > 0) {
+                    result = true;
+                    LOG.info("Coupan is blocked successfully!");
+                }
+            } else {
+                LOG.info("Prepared Statement is not confirugred properly & Unable to connect from database in the blockOwner method!!!");
+                sending.emailSending("Prepared Statement is not confirugred properly & Unable to connect from database in the blockOwner method!!!");
+            }
+        } catch (SQLException | NumberFormatException e) {
+            LOG.info("Exception is get from blockOwner method in OwnerImpl", e);
+            e.printStackTrace(new PrintWriter(errors));
+            sending.emailSending(errors.toString());
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                    LOG.info("preparedStatement is closed successfully in  the blockOwner method in OwnerImpl class");
+                }
+                if (conn != null) {
+                    conn.close();
+                    LOG.info("connection is closed successfully in the blockOwner method in OwnerImpl");
+                }
+            } catch (SQLException e) {
+                System.out.println("SQLException in closing prepareStatement and connection " + e.getMessage());
+                e.printStackTrace(new PrintWriter(errors));
+                sending.emailSending("Exception from  blockOwner method in OwnerImpl Class " + errors.toString());
+            } catch (Exception e) {
+                System.out.println("SQLException in closing prepareStatement and connection " + e.getMessage());
+                e.printStackTrace(new PrintWriter(errors));
+                sending.emailSending("Exception from  blockOwner method in OwnerImpl Class" + errors.toString());
+            }
+        }
+        return result;
     }
 
     @Override

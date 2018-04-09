@@ -515,6 +515,214 @@ $("#editCoupanBasic").click(function () {
 });
 /*End of update new coupan*/
 
+/*Start of update new owner*/
+$("#editOwnerBasic").click(function () {
+    $('input[type="text"]').each(function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
+    var fname = $("#fname").val();
+    if (typeof fname === 'undefined' || !fname)
+    {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please enter the First Name");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#fname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if ($('#fname').val().length > 20)
+    {
+        $("#errorOwner").css("display=block");
+        $("#errorOwner").html("First name can't be more than 20 characters");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#fname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#fname').css({"border": "", "background": ""});
+    }
+    var lname = $("#lname").val();
+    if (typeof lname === 'undefined' || !lname)
+    {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please enter the Last Name");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#lname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if ($('#lname').val().length > 20)
+    {
+        $("#errorOwner").css("display=block");
+        $("#errorOwner").html("Last Name can't be more than 20 characters");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#lname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#lname').css({"border": "", "background": ""});
+    }
+    var mobno = $("#mobno").val();
+    if (typeof mobno === 'undefined' || !mobno)
+    {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please enter the Mobile Number");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#mobno').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if ($('#mobno').val().length > 12)
+    {
+        $("#errorOwner").css("display=block");
+        $("#errorOwner").html("Mobile Number can't be more than 12 characters");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#mobno').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#mobno').css({"border": "", "background": ""});
+    }
+    var emailId = $("#emailId").val();
+    if (typeof emailId === 'undefined' || !emailId)
+    {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please enter the Mail Id.");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#emailId').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if (validateEmail(emailId) === false) {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please enter the valid Mail Id eg. info@webhosting.com");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#emailId').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#emailId').css({"border": "", "background": ""});
+    }
+    var dob = $("#dob").val();
+    if (typeof dob === 'undefined' || !dob)
+    {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please enter the Date of birth");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#dob').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if ($('#dob').val().length > 20)
+    {
+        $("#errorOwner").css("display=block");
+        $("#errorOwner").html("Date of Birth can't be greater than 20 characters");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#dob').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#dob').css({"border": "", "background": ""});
+    }
+    var address = $("#address").val();
+    if (typeof address === 'undefined' || !address)
+    {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please enter the Address.");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#address').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#address').css({"border": "", "background": ""});
+    }
+    var ostatus = $("#ostatus").val();
+    if (typeof ostatus === 'undefined' || !ostatus)
+    {
+        $("#errorOwner").css("display =block");
+        $("#errorOwner").html("Please select the Status.");
+        $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorOwner").slideUp(1000);
+        });
+        $('#ostatus').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#ostatus').css({"border": "", "background": ""});
+    }
+    var ownerId = $("#ownerId").val();
+    $.ajax({
+        type: "POST",
+        url: '../OwnerController.do',
+        data: {'action': 'updateOwner', 'fname': fname, 'lname': lname, 'mobno': mobno, 'emailId': emailId, 'dob': dob, 'address': address, 'ostatus': ostatus, 'ownerId': ownerId},
+        datatype: "json",
+        restful: true,
+        cache: false,
+        timeout: 20000,
+        async: true,
+        success: function (data) {
+            var jsonData = JSON.parse(data);
+            if (jsonData.message === "success") {
+                $('input[type=text]').each(function () {
+                    $(this).val('');
+                });
+                $(mobno).val('');
+                $(emailId).val('');
+                $(ostatus).val('');
+                if (document.getElementById('successBusiness').style.display === 'none') {
+                    document.getElementById('successBusiness').style.display = 'block';
+                    document.getElementById("successBusiness").innerHTML = "Owner is updated successfully";
+                } else
+                {
+                    document.getElementById("successBusiness").innerHTML = "Owner is updated successfully";
+                }
+                $("#successBusiness").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#successBusiness").slideUp(1000);
+                });
+            } else {
+                if (document.getElementById('errorOwner').style.display === 'none') {
+                    document.getElementById('errorOwner').style.display = 'block';
+                    document.getElementById("errorOwner").innerHTML = jsonData.message;
+                } else
+                {
+                    document.getElementById("errorOwner").innerHTML = jsonData.message;
+                }
+                $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#errorOwner").slideUp(1000);
+                });
+            }
+        },
+        error: function () {
+            if (document.getElementById('errorOwner').style.display === 'none') {
+                $("#errorOwner").css("display =block");
+                $("#errorOwner").html("Something went wrong. Please try after some time!");
+            } else
+            {
+                $("#errorOwner").html("Something went wrong. Please try after some time!");
+            }
+            $("#errorOwner").fadeTo(2000, 1000).slideUp(1000, function () {
+                $("#errorOwner").slideUp(1000);
+            });
+        }
+    });
+});
+/*End of update new owner*/
+
 /*Start of admin signin area*/
 $("#adminSignIn").click(function () {
     $('input[type="text"]').each(function () {
@@ -1221,55 +1429,57 @@ function coupanProfileBlock(dataItem)
 
 
 /*Start of owner coupan */
-function coupaProfileEdit(item)
+function ownerProfileEdit(item)
 {
     $("#getAllOwner").hide();
     $("#viewOwner").hide();
     $("#editOwner").show();
-    $("#ecode").val(item.CoupanCode);
-    $("#esdate").val(item.StartDate);
-    $("#eedate").val(item.EndDate);
-    $("#ediscount").val(item.Discount);
-    $("#coupanStatus").val(item.Status);
+    $("#fname").val(item.Firstname);
+    $("#lname").val(item.Lastname);
+    $("#mobno").val(item.PhnNo);
+    $("#emailId").val(item.Email);
+    $("#dob").val(item.DOB);
+    $("#address").val(item.Address);
+    $("#ostatus").val(item.Status);
     $("#coupanId").val(item.coupanId);
 }
 /* End of owner edit profile */
 
 /* Start of owner view  */
-function coupanProfileView(item)
+function ownerProfileView(item)
 {
     $("#editOwner").hide();
     $("#getAllOwner").hide();
     $("#viewOwner").show();
-    $("#ownerProfileView").append('<li><span class="outDetails">Coupan Id </span>' + item.coupanId + '</li><li><span class="outDetails">Coupan Code</span>' + item.CoupanCode + '</li><li><span class="outDetails">Start date</span>' + item.StartDate + '</li><li><span class="outDetails">Expiry Date</span>' + item.EndDate + '</li><li><span class="outDetails">Discount</span>' + item.Discount + '</li><li><span class="outDetails">Creator Id</span>' + item.CreatorId + '</li><li><span class="outDetails">Creation Date</span>' + item.Date + '</li><li><span class="outDetails">Status</span>' + item.Status + '</li>');
+    $("#ownerProfileView").append('<li><span class="outDetails">Owner Id </span>' + item.ownerId + '</li><li><span class="outDetails">First Name</span>' + item.Firstname + '</li><li><span class="outDetails">Last Name</span>' + item.Lastname + '</li><li><span class="outDetails">Unique Id</span>' + item.UnqId + '</li><li><span class="outDetails">Mobile No</span>' + item.PhnNo + '</li><li><span class="outDetails">Address</span>' + item.Address + '</li><li><span class="outDetails">Email Id</span>' + item.Email + '</li><li><span class="outDetails">Gender</span>' + item.Gender + '</li><li><span class="outDetails">DOB</span>' + item.DOB + '</li><li><span class="outDetails">Date</span>' + item.Date + '</li><li><span class="outDetails">Status</span>' + item.Status + '</li>');
     $("#ownerEditInfo").click(function () {
-        coupanProfileEdit(item);
+        ownerProfileEdit(item);
     });
 }
 /* End of owner view  */
 
 /*Start of owner  block*/
-function coupanProfileBlock(dataItem)
+function ownerProfileBlock(dataItem)
 {
-    var actionCoupan;
+    var actionOwner;
     if (dataItem.Status === 'Block')
     {
-        if (!confirm("Do you want to Active Coupan")) {
+        if (!confirm("Do you want to Active owner")) {
             return false;
         }
-        actionCoupan = 'activeCoupan';
+        actionOwner = 'activeOwner';
     }
     if (dataItem.Status === 'Active')
     {
-        if (!confirm("Do you want to Block Coupan")) {
+        if (!confirm("Do you want to Block owner")) {
             return false;
         }
-        actionCoupan = 'blockCoupan';
+        actionOwner = 'blockOwner';
     }
     $.ajax({
         type: 'post',
-        url: '../PromoController.do',
-        data: {'action': actionCoupan, 'id': dataItem.coupanId},
+        url: '../OwnerController.do',
+        data: {'action': actionOwner, 'id': dataItem.UnqId},
         dataType: "json",
         restful: true,
         cache: false,
