@@ -1,7 +1,6 @@
 <div class="searchBarInclude">
     <h5><i class="icon-eye"> </i> Search Your Property</h5>
-
-    <div class="">
+    <div class="searchBody">
         <form>
             <div class="row">
                 <div class="col-sm-12">
@@ -11,7 +10,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12 col-md-6">
                     <div class="form-group">
@@ -26,7 +24,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -40,7 +37,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -53,8 +49,6 @@
                     </div>
                 </div>
             </div>
-            
-            
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -68,7 +62,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -82,7 +75,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
@@ -98,15 +90,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="form-group">
-                        
                         <button class="filter-search">Search Homes</button>
-                        
                     </div>
                 </div>
             </div>
-
-
         </form>
     </div>
-
 </div>
