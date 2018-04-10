@@ -14,7 +14,7 @@
             </a>
             <ul class="collapse collapseable" id="collapse-post">
                 <li><a href="#">Add Customer</a></li>
-                <li><a href="#">View All Customer</a></li>
+                <li><a href="viewAllCustomer.jsp">View All Customer</a></li>
             </ul>
         </li>
                 <li class="link">

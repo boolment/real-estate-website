@@ -25,12 +25,81 @@ public class OwnerImpl implements OwnerInterface {
 
     @Override
     public boolean updateOwner(OwnerMasterBean ownermasterbean) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        LOG.info("method is called updateOwner");
+        StringWriter errors = new StringWriter();
+        EmailSend sending = new EmailSend();
+        String query;
+        PreparedStatement pstmt = null;
+        boolean results = false;
+        Connection conn = null;
+        try {
+            conn = DBConnect.getDBConnection();
+            LOG.info("DB Connection established");
+        } catch (Exception e) {
+            e.printStackTrace(new PrintWriter(errors));
+            sending.emailSending("Exception from  updateOwner method in OwnerImpl Class " + errors.toString());
+        }
+        query = "update owner_master set  owner_fname=?,owner_lname=?,owner_phone_no=?,owner_email_id=?,owner_date_of_birth=?,owner_address_type=?,owner_status=? where owner_id=? ";
+        try {
+            if (conn != null) {
+                try {
+                    LOG.info("Execution before the prepareStatement");
+                    pstmt = conn.prepareStatement(query);
+                    LOG.info("After the prepareStatement in updateOwner");
+                    pstmt.setString(1, ownermasterbean.getOwner_first_name());
+                    pstmt.setString(2, ownermasterbean.getOwner_last_name());
+                    pstmt.setString(3, ownermasterbean.getOwner_phone_number());
+                    pstmt.setString(4, ownermasterbean.getOwner_email_id());
+                    pstmt.setString(5, ownermasterbean.getOwner_date_of_birth());
+                    pstmt.setString(6, ownermasterbean.getOwner_address_type());
+                    pstmt.setString(7, ownermasterbean.getOwner_status());
+                    pstmt.setInt(8, ownermasterbean.getOwner_id());
+                    int result = pstmt.executeUpdate();
+                    LOG.info("updateOwner method executed");
+                    if (result > 0) {
+                        LOG.info("Coupan data  is updated successfully in the db updateOwner");
+                        results = true;
+                    } else {
+                        LOG.info("Unable to update the coupan data in the db" + result);
+                    }
+                } catch (SQLException e) {
+                    LOG.error("Exception during the executeUpdate in the updateOwner" + e);
+                    e.printStackTrace(new PrintWriter(errors));
+                    sending.emailSending("Exception during the executeUpdate in the updateOwner in OwnerImpl Class " + errors.toString());
+                }
+            } else {
+                LOG.info("Prepared Statement is not confirugred properly & Unable to connect from database in updateOwner from OwnerImpl !!!");
+            }
+        } catch (Exception e) {
+            LOG.error("Exception from  updateOwner mthod in OwnerImpl Class" + e);
+            e.printStackTrace(new PrintWriter(errors));
+            sending.emailSending("Exception from  updateOwner mthod in OwnerImpl Class " + errors.toString());
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                    LOG.info("Prepared statement is closed successfully in the updateOwner from OwnerImpl");
+                }
+                if (conn != null) {
+                    conn.close();
+                    LOG.info("Connection is closed successfully in the updateOwner from OwnerImpl");
+                }
+            } catch (SQLException e) {
+                LOG.error("SQLException in closing prepareStatement and connection in updateOwner method" + e);
+                e.printStackTrace(new PrintWriter(errors));
+                sending.emailSending("SQLException from  updateOwner mthod in OwnerImpl Class " + errors.toString());
+            } catch (Exception e) {
+                LOG.error("Exception in closing prepareStatement and connection in updateOwner method from OwnerImpl");
+                e.printStackTrace(new PrintWriter(errors));
+                sending.emailSending("Exception from  updateOwner mthod in OwnerImpl Class" + errors.toString());
+            }
+        }
+        return results;
     }
 
     @Override
     public boolean blockOwner(OwnerMasterBean ownermasterbean) {
- LOG.info("blockOwner method is called");
+        LOG.info("blockOwner method is called");
         EmailSend sending = new EmailSend();
         StringWriter errors = new StringWriter();
         String query;
@@ -101,7 +170,7 @@ public class OwnerImpl implements OwnerInterface {
 
     @Override
     public List<OwnerMasterBean> getAllOwner() {
-LOG.info("getAllOwner Method is called");
+        LOG.info("getAllOwner Method is called");
         PreparedStatement pstmt = null;
         Connection conn = null;
         EmailSend sending = new EmailSend();
@@ -180,7 +249,8 @@ LOG.info("getAllOwner Method is called");
         } else {
             LOG.info("Size of the returnlist is zero");
         }
-        return returnlist;    }
+        return returnlist;
+    }
 
     @Override
     public String getOwnerUniqueId(OwnerMasterBean ownermasterbean) {
@@ -191,7 +261,7 @@ LOG.info("getAllOwner Method is called");
         PreparedStatement pstmt = null;
         ResultSet rs;
         Connection conn = null;
-        String UniqueId =null;
+        String UniqueId = null;
         try {
             conn = DBConnect.getDBConnection();
             LOG.info("Connection establishment successfully with database");
@@ -420,7 +490,7 @@ LOG.info("getAllOwner Method is called");
 
     @Override
     public boolean setOwnerChangePassword(OwnerMasterBean ownermasterbean) {
- LOG.info("method is called setOwnerChangePassword");
+        LOG.info("method is called setOwnerChangePassword");
         EmailSend sending = new EmailSend();
         StringWriter errors = new StringWriter();
         String query;
@@ -490,7 +560,7 @@ LOG.info("getAllOwner Method is called");
 
     @Override
     public String getOwnerOTP(OwnerMasterBean ownermasterbean) {
- LOG.info("getOwnerOTP method is called");
+        LOG.info("getOwnerOTP method is called");
         EmailSend sending = new EmailSend();
         StringWriter errors = new StringWriter();
         String query;

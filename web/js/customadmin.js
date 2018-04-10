@@ -140,6 +140,68 @@ $(document).ready(function () {
     }
     /*End  of owner view */
 
+    /*Start of view all customer */
+    customerTableData();
+    function customerTableData()
+    {
+        $.ajax({
+            type: 'post',
+            url: '../CustomerController.do',
+            data: {'action': 'getAllCustomer'},
+            dataType: "json",
+            restful: true,
+            cache: false,
+            timeout: 20000,
+            async: true,
+            success: function (data) {
+                var actionLinks;
+                if (data.message === "success") {
+                    $('#Cdisplay').DataTable().clear().draw();
+                    jQuery(data.customers).each(function (i, item) {
+
+                        var id = item.customerUniqueid;
+                        var dataItem = JSON.stringify(item);
+                        if (item.Status === "Active")
+                        {
+                            actionLinks = "<div class='btn-group'><button class='btn btn-primary btn-xs dropdown-toggle' data-placement='left' type='button' data-toggle='dropdown' aria-expanded='false'>Action <i class='fa fa-angle-down'></i></button><ul class='dropdown-menu' style='left:-100px' role='menu'><li><a href='#' onclick='custProfileView(" + dataItem + ");'>View Customer</a></li><li><a href='#' onclick='custProfileEdit(" + dataItem + ");'>Edit Customer</a></li><li><a href='#' onclick='customerProfileBlock(" + dataItem + ");'>Block Customer</a></li></ul></div>";
+                        } else
+                            actionLinks = "<div class='btn-group'><button class='btn btn-primary btn-xs dropdown-toggle' data-placement='left' type='button' data-toggle='dropdown' aria-expanded='false'>Action <i class='fa fa-angle-down'></i></button><ul class='dropdown-menu' style='left:-100px' role='menu'><li><a href='#' onclick='custProfileView(" + dataItem + ");'>View Customer</a></li><li><a href='#' onclick='custProfileEdit(" + dataItem + ");'>Edit Customer</a></li><li><a href='#' onclick='customerProfileBlock(" + dataItem + ");'>Active Customer</a></li></ul></div>";
+                        $('#Cdisplay').DataTable().row.add([
+                            item.customerFirstName,
+                            item.customerLastName,
+                            item.customerMobileNo,
+                            item.customermailId,
+                            item.Address,
+                            item.Date,
+                            item.Status,
+                            actionLinks
+                        ]).draw(false);
+                    });
+                } else {
+                    if (document.getElementById('ErrorsCustomers').style.display === 'none') {
+                        document.getElementById('ErrorsCustomers').style.display = 'block';
+                        document.getElementById("ErrorsCustomers").innerHTML = data.message;
+                    } else
+                    {
+                        document.getElementById("ErrorsCustomers").innerHTML = data.message;
+                    }
+                }
+            },
+            error: function () {
+                if (document.getElementById('ErrorsCustomers').style.display === 'none') {
+                    $("#ErrorsCustomers").css("display =block");
+                    $("#ErrorsCustomers").html("Something went wrong. Please try after some time!");
+                } else
+                {
+                    $("#ErrorsCustomers").html("Something went wrong. Please try after some time!");
+                }
+            }
+        });
+    }
+
+    /*End of view all customer*/
+
+
 
 });
 
@@ -678,12 +740,11 @@ $("#editOwnerBasic").click(function () {
         success: function (data) {
             var jsonData = JSON.parse(data);
             if (jsonData.message === "success") {
+                alert("successfully");
                 $('input[type=text]').each(function () {
                     $(this).val('');
                 });
-                $(mobno).val('');
-                $(emailId).val('');
-                $(ostatus).val('');
+
                 if (document.getElementById('successBusiness').style.display === 'none') {
                     document.getElementById('successBusiness').style.display = 'block';
                     document.getElementById("successBusiness").innerHTML = "Owner is updated successfully";
@@ -722,6 +783,193 @@ $("#editOwnerBasic").click(function () {
     });
 });
 /*End of update new owner*/
+
+/*Start of update new customer*/
+$("#editCustomerBasic").click(function () {
+    alert("called");
+    $('input[type="text"]').each(function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
+    var cfirstname = $("#cfirstname").val();
+    if (typeof cfirstname === 'undefined' || !cfirstname)
+    {
+        $("#errorCustomer").css("display =block");
+        $("#errorCustomer").html("Please enter the First Name");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#cfirstname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if ($('#cfirstname').val().length > 20)
+    {
+        $("#errorCustomer").css("display=block");
+        $("#errorCustomer").html("First name can't be more than 20 characters");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#cfirstname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#cfirstname').css({"border": "", "background": ""});
+    }
+    alert(cfirstname);
+    var clastname = $("#clastname").val();
+    if (typeof clastname === 'undefined' || !clastname)
+    {
+        $("#errorCustomer").css("display =block");
+        $("#errorCustomer").html("Please enter the Last Name");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#clastname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if ($('#clastname').val().length > 20)
+    {
+        $("#errorCustomer").css("display=block");
+        $("#errorCustomer").html("Last Name can't be more than 20 characters");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#clastname').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#clastname').css({"border": "", "background": ""});
+    }
+    var cmobilenumber = $("#cmobilenumber").val();
+    if (typeof cmobilenumber === 'undefined' || !cmobilenumber)
+    {
+        $("#errorCustomer").css("display =block");
+        $("#errorCustomer").html("Please enter the Mobile Number");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#cmobilenumber').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if ($('#cmobilenumber').val().length > 12)
+    {
+        $("#errorCustomer").css("display=block");
+        $("#errorCustomer").html("Mobile Number can't be more than 12 characters");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#cmobilenumber').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#cmobilenumber').css({"border": "", "background": ""});
+    }
+    var cmailid = $("#cmailid").val();
+    if (typeof cmailid === 'undefined' || !cmailid)
+    {
+        $("#errorCustomer").css("display =block");
+        $("#errorCustomer").html("Please enter the Mail Id.");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#cmailid').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if (validateEmail(cmailid) === false) {
+        $("#errorCustomer").css("display =block");
+        $("#errorCustomer").html("Please enter the valid Mail Id eg. info@webhosting.com");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#cmailid').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#cmailid').css({"border": "", "background": ""});
+    }
+    var caddress1 = $("#caddress1").val();
+    if (typeof caddress1 === 'undefined' || !caddress1)
+    {
+        $("#errorCustomer").css("display =block");
+        $("#errorCustomer").html("Please enter the Address.");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#caddress1').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#caddress1').css({"border": "", "background": ""});
+    }
+    var custStatus = $("#custStatus").val();
+    if (typeof custStatus === 'undefined' || !custStatus)
+    {
+        $("#errorCustomer").css("display =block");
+        $("#errorCustomer").html("Please select the Status.");
+        $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#errorCustomer").slideUp(1000);
+        });
+        $('#custStatus').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#custStatus').css({"border": "", "background": ""});
+    }
+    var customerUniqueid = $("#customerUniqueid").val();
+    $.ajax({
+        type: "POST",
+        url: '../CustomerController.do',
+        data: {'action': 'updateCustomer', 'fname': cfirstname, 'lname': clastname, 'mobno': cmobilenumber, 'emailId': cmailid, 'address': caddress1, 'ostatus': custStatus, 'customerUniqueid': customerUniqueid},
+        datatype: "json",
+        restful: true,
+        cache: false,
+        timeout: 20000,
+        async: true,
+        success: function (data) {
+            var jsonData = JSON.parse(data);
+            if (jsonData.message === "success") {
+                alert("successfully");
+                $('input[type=text]').each(function () {
+                    $(this).val('');
+                });
+                $(cmobilenumber).val('');
+                $(custStatus).val('');
+                if (document.getElementById('successBusiness').style.display === 'none') {
+                    document.getElementById('successBusiness').style.display = 'block';
+                    document.getElementById("successBusiness").innerHTML = "Owner is updated successfully";
+                } else
+                {
+                    document.getElementById("successBusiness").innerHTML = "Owner is updated successfully";
+                }
+                $("#successBusiness").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#successBusiness").slideUp(1000);
+                });
+            } else {
+                if (document.getElementById('errorCustomer').style.display === 'none') {
+                    document.getElementById('errorCustomer').style.display = 'block';
+                    document.getElementById("errorCustomer").innerHTML = jsonData.message;
+                } else
+                {
+                    document.getElementById("errorCustomer").innerHTML = jsonData.message;
+                }
+                $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#errorCustomer").slideUp(1000);
+                });
+            }
+        },
+        error: function () {
+            if (document.getElementById('errorCustomer').style.display === 'none') {
+                $("#errorCustomer").css("display =block");
+                $("#errorCustomer").html("Something went wrong. Please try after some time!");
+            } else
+            {
+                $("#errorCustomer").html("Something went wrong. Please try after some time!");
+            }
+            $("#errorCustomer").fadeTo(2000, 1000).slideUp(1000, function () {
+                $("#errorCustomer").slideUp(1000);
+            });
+        }
+    });
+});
+/*End of update new customer*/
 
 /*Start of admin signin area*/
 $("#adminSignIn").click(function () {
@@ -1390,25 +1638,25 @@ function coupanProfileView(item)
 /*Start of coupan  block*/
 function coupanProfileBlock(dataItem)
 {
-    var actionCoupan;
+    var actionCustomer;
     if (dataItem.Status === 'Block')
     {
-        if (!confirm("Do you want to Active Coupan")) {
+        if (!confirm("Do you want to Active Customer")) {
             return false;
         }
-        actionCoupan = 'activeCoupan';
+        actionCustomer = 'activeCustomer';
     }
     if (dataItem.Status === 'Active')
     {
-        if (!confirm("Do you want to Block Coupan")) {
+        if (!confirm("Do you want to Block Customer")) {
             return false;
         }
-        actionCoupan = 'blockCoupan';
+        actionCustomer = 'blockCustomer';
     }
     $.ajax({
         type: 'post',
-        url: '../PromoController.do',
-        data: {'action': actionCoupan, 'id': dataItem.coupanId},
+        url: '../CustomerController.do',
+        data: {'action': actionCustomer, 'id': dataItem.Id},
         dataType: "json",
         restful: true,
         cache: false,
@@ -1441,7 +1689,7 @@ function ownerProfileEdit(item)
     $("#dob").val(item.DOB);
     $("#address").val(item.Address);
     $("#ostatus").val(item.Status);
-    $("#coupanId").val(item.coupanId);
+    $("#ownerId").val(item.ownerId);
 }
 /* End of owner edit profile */
 
@@ -1497,6 +1745,76 @@ function ownerProfileBlock(dataItem)
 
 }
 /*End of owner  block*/
+
+/* Start of customer edit profile */
+function custProfileEdit(item)
+{
+    $("#viewAllCustomer").hide();
+    $("#viewCustomer").hide();
+    $("#editCustomers").show();
+    $("#cfirstname").val(item.customerFirstName);
+    $("#clastname").val(item.customerLastName);
+    $("#cmobilenumber").val(item.customerMobileNo);
+    $("#cmailid").val(item.customermailId);
+    $("#caddress1").val(item.Address);
+    $("#custStatus").val(item.Status);
+    $("#customerUniqueid").val(item.Id);
+}
+/* End of customer edit profile */
+
+/* Start of customer view profile */
+function custProfileView(item)
+{
+    $("#editCustomers").hide();
+    $("#viewAllCustomer").hide();
+    $("#viewCustomer").show();
+    $("#customerProfileView").append('<li><span class="outDetails">Id</span>' + item.Id + '</li><li><span class="outDetails">F Name</span>' + item.customerFirstName + '</li><li><span class="outDetails">L Name</span>' + item.customerLastName + '</li><li><span class="outDetails">Unique Id</span>' + item.customerUserName + '</li><li><span class="outDetails">Email id</span>' + item.customermailId + '</li><li><span class="outDetails">Mobile Number</span>' + item.customerMobileNo + '</li><li><span class="outDetails">Photo</span>' + item.photo + '</li><li><span class="outDetails">Gender</span>' + item.Gender + '</li><li><span class="outDetails">DOB</span>' + item.DOB + '</li><li><span class="outDetails">Address</span>' + item.Address + '</li><li><span class="outDetails">Membership type</span>' + item.MembershipType + '</li><li><span class="outDetails">No. Of Times Prop Changed</span>' + item.noOfTimesPropChanged + '</li><li><span class="outDetails">Payment Status</span>' + item.PaymentStatus + '</li><li><span class="outDetails">Creation date</span>' + item.Date + '</li><li><span class="outDetails">Membership Start date</span>' + item.MembershipStartDate + '</li><li><span class="outDetails">Membership End Date</span>' + item.MembershipEndDate + '</li><li><span class="outDetails">Owner Unique Id</span>' + item.OwnerUnqId + '</li><li><span class="outDetails">Prop Unique Id</span>' + item.PropUnqId + '</li><li><span class="outDetails">Status</span>' + item.Status + '</li>');
+    $("#customerEditInfo").click(function () {
+        custProfileEdit(item);
+    });
+}
+/* End of customer view profile */
+
+/*Start of customer profile block*/
+function customerProfileBlock(dataItem)
+{
+    var actionCustomer;
+    if (dataItem.Status === 'Block')
+    {
+        if (!confirm("Do you want to Active Customer Profile")) {
+            return false;
+        }
+        actionCustomer = 'activeCustomer';
+    }
+    if (dataItem.Status === 'Active')
+    {
+        if (!confirm("Do you want to Block Customer Profile")) {
+            return false;
+        }
+        actionCustomer = 'blockCustomer';
+    }
+    $.ajax({
+        type: 'post',
+        url: '../CustomerController.do',
+        data: {'action': actionCustomer, 'id': dataItem.customerUserName},
+        dataType: "json",
+        restful: true,
+        cache: false,
+        timeout: 20000,
+        async: true,
+        success: function (data) {
+            if (data.message === "success") {
+                location.reload();
+            } else {
+            }
+        },
+        error: function () {
+        }
+    });
+
+}
+/*End of customer profile block*/
+
 
 function validateEmail(email) {
     var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;

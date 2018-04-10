@@ -22,16 +22,16 @@
 
                     <!-- end of top menu area -->
                     <!-- start of main content area -->
-                    <div class="content" id="getAllOwner"  style="display:block">
+                    <div class="content" id="viewAllCustomer"  style="display:block">
                         <header>
-                            <h2 class="page_title">Manage All Your Coupan</h2>
+                            <h2 class="page_title">Manage All your Customer</h2>
                         </header>
                         <div class="content-inner">
                             <div class="row">
                                 <div class="col-sm-12"> 
-                                    <div id="errorOwner" class="alert alert-danger" style="display:none"></div>
+                                    <div id="ErrorsCustomers" class="alert alert-danger" style="display:none"></div>
 
-                                    <table id="ownerDisplay" class="table table-striped table-bordered removeTableWeight" cellspacing="0" width="100%">
+                                    <table id="Cdisplay" class="table table-striped table-bordered removeTableWeight" cellspacing="0" width="100%">
                                         <thead>
                                             <tr>
                                                 <th>F Name</th>
@@ -46,7 +46,7 @@
                                         </thead>
                                         <tfoot>
                                             <tr>
-                                                <th>F Name</th>
+                                                  <th>F Name</th>
                                                 <th>L Name</th>
                                                 <th>Mobile no.</th>
                                                 <th>Mail Id</th>
@@ -57,7 +57,6 @@
                                             </tr>
                                         </tfoot>
                                         <tbody>
-
                                         </tbody>
                                     </table>
                                 </div>
@@ -65,18 +64,19 @@
                             </div>
                         </div>
                     </div> 
+
                     <!-- start of view Lead content area --->
-                    <div class="content" id="viewOwner" style="display:none">
+                    <div class="content" id="viewCustomer" style="display:none">
                         <header>
-                            <h2 class="page_title">View Staff Details</h2>
+                            <h2 class="page_title">View Customer Details</h2>
                         </header> 
                         <div class="customerProfile">
                             <div class="content-inner">                         
-                                <div id="errorCoupanProfile" class="alert alert-danger" style="display:none"></div>
-                                <div id="successCoupanProfile" class="alert alert-success" style="display:none"></div>
+                                <div id="errorCustomerProfile" class="alert alert-danger" style="display:none"></div>
+                                <div id="successCustomerProfile" class="alert alert-success" style="display:none"></div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a href="viewAllOwner.jsp" class="pull-right btnAddOutLet"><i class="fa fa-arrow-left"></i> Back To Owner List</a>
+                                        <a href="viewAllCustomer.jsp" class="pull-right btnAddOutLet"><i class="fa fa-arrow-left"></i> Back To Customer List</a>
                                     </div>
                                     <div class="col-sm-12 col-md-4">
                                         <div class="row">
@@ -86,10 +86,10 @@
                                                     <div class="profilePic">
                                                         <img src="../images/userProfile.jpg" alt="">
                                                         <h6 id="profileName"></h6>
-                                                        <p id="staffPhone"></p>
+                                                        <p id="customerPhone"></p>
                                                     </div>
                                                     <span><i class="fa fa-home"></i> <a href="#bookingHistory" id="booking"> Overview</a></span>
-                                                    <span><i class="fa fa-gear"></i> <a href="#" id="ownerEditInfo"> Edit Info</a></span>
+                                                    <span><i class="fa fa-gear"></i> <a href="#" id="customerEditInfo"> Edit Info</a></span>
 
                                                     <a class="btn btn-primary" id="customerBtn">Book Appointment</a>
                                                 </div>
@@ -107,9 +107,9 @@
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-8">
-                                        <div class="customerProfileRightSidebar" id="bookingHistory" style="display: block">
-                                            <h5>Owner Profile</h5>
-                                            <ul id="ownerProfileView">
+                                        <div class="customerProfileRightSidebar " id="bookingHistory" style="display: block">
+                                            <h5>Customer Profile</h5>
+                                            <ul id="customerProfileView">
                                                 <!--view Profile Data here    -->
 
 
@@ -123,14 +123,14 @@
                     </div>
                     <!-- end of view Lead content area --->
                     <!-- start of main content area -->
-                    <div class="content" id="editOwner" style="display:none">
+                    <div class="content" id="editCustomers" style="display:none">
                         <header>
-                            <h2 class="page_title">Edit Coupan Details</h2>
+                            <h2 class="page_title">Edit Customer Details</h2>
                         </header>
                         <div class="content-inner">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <a href="viewAllCoupan.jsp" class="pull-right btnAddOutLet"><i class="fa fa-arrow-left"></i> Back To Owner List</a>
+                                    <a href="viewAllCustomer.jsp" class="pull-right btnAddOutLet"><i class="fa fa-arrow-left"></i> Back To Customer List</a>
                                 </div>
                             </div>
                             <div class="row">
@@ -140,7 +140,7 @@
                                             <div class="panel-heading">
                                                 <div class="panel-title">
                                                     <div class="caption">
-                                                        <i class="fa fa-briefcase"> Owner Profile</i>
+                                                        <i class="fa fa-briefcase"> Customer Profile</i>
                                                         <a data-toggle="collapse" href="#collapse1" data-original-title><i class="fa fa-plus"></i></a>
                                                     </div>
 
@@ -149,66 +149,56 @@
                                             </div>                                           
                                             <div id="collapse1" class="panel-collapse in active">
                                                 <div class="panel-body">
-                                                    <div id="errorOwner" class="alert alert-danger" style="display:none"></div>
+                                                    <div id="errorCustomer" class="alert alert-danger" style="display:none"></div>
                                                     <div id="successBusiness" class="alert alert-success" style="display:none"></div>                        
                                                     <div class="row">
                                                         <form   id="form1">
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
-                                                                    <label  class="control-label" for="ownerName">First Name <span class="red">*</span></label>
-                                                                    <input type="text" placeholder="First Name" id="fname" name="ownerName" class="form-control required" autocomplete="off" >
+                                                                    <label  class="control-label" for="ownerName">First Name<span class="red">*</span></label>
+                                                                    <input type="text" placeholder="First Name" id="cfirstname" name="ownerName" class="form-control required" autocomplete="off" >
                                                                 </div>
-                                                            </div>
+                                                            </div>  
+                                                            <input type="hidden" id="customerUniqueid"/>
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
                                                                     <label  class="control-label" for="ownerName">Last Name<span class="red">*</span></label>
-                                                                    <input type="text" placeholder="Start Date" id="lname" name="ownerName" class="form-control required" autocomplete="off" >
+                                                                    <input type="text" placeholder="Last Name" id="clastname" name="ownerName" class="form-control required" autocomplete="off" >
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
                                                                     <label  class="control-label" for="ownerName">Mobile Number<span class="red">*</span></label>
-                                                                    <input type="number" placeholder="Expiry Date" id="mobno" name="ownerName" class="form-control required" autocomplete="off" >
+                                                                    <input type="number" placeholder="Mobile Number" id="cmobilenumber" name="ownerName" class="form-control required" autocomplete="off" >
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-5">
                                                                 <div class="form-group">
                                                                     <label  class="control-label" for="ownerName">Email Id<span class="red">*</span></label>
-                                                                    <input type="email" placeholder="Discount" id="emailId" name="ownerName" class="form-control" autocomplete="off" >
+                                                                    <input type="text" placeholder="Email Id" id="cmailid" name="ownerName" class="form-control" autocomplete="off" >
                                                                 </div>
-                                                            </div>
-                                                             <div class="col-md-5">
+                                                            </div>                                                                                                                                                                        
+                                                            <div class="col-md-5">
                                                                 <div class="form-group">
-                                                                    <label  class="control-label" for="ownerName">Date Of Birth<span class="red">*</span></label>
-                                                                    <input type="text" placeholder="Discount" id="dob" name="ownerName" class="form-control" autocomplete="off" >
+                                                                    <label  class="control-label" for="ownerName">Address1<span class="red">*</span></label>
+                                                                    <input type="text" placeholder="Address" id="caddress1" name="ownerName" class="form-control" autocomplete="off" >
                                                                 </div>
-                                                            </div>
-                                                             <div class="col-md-5">
-                                                                <div class="form-group">
-                                                                    <label  class="control-label" for="ownerName">Address<span class="red">*</span></label>
-                                                                    <input type="text" placeholder="Discount" id="address" name="ownerName" class="form-control" autocomplete="off" >
-                                                                </div>
-                                                            </div>
-                                                                  <div class="col-md-5">
+                                                            </div> 
+                                                            <div class="col-md-5">
                                                                 <div class="form-group">
                                                                     <label  class="control-label" for="ownerName">Status<span class="red">*</span></label>
-                                                                    <select class="form-control required" id ="ostatus" name="dropdownlist">
+                                                                    <select class="form-control required" id ="custStatus" name="dropdownlist">
                                                                         <option value="">Select Status</option>
                                                                         <option value="Active">Active</option>
                                                                         <option value="Block">Block</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                                <input type="hidden" id="ownerId"/>
-                                                            <div class="col-md-5">
-                                                                <div class="form-group">
-                                                                </div>
-                                                            </div>                                                                         
                                                             <div class="clearfix" style="height: 10px;clear: both;"></div>
                                                             <div class="form-group">
                                                                 <div class="col-lg-12">
-                                                                    <button class="btn btn-primary open1" id="editOwnerBasic" type="button"><i class="fa fa-arrow-right fa-1x"></i>Update</button>
-                                                                    <button class="btn btn-default open1" id="cancelOwnerupdate" type="button"><i class="fa fa-close fa-1x"></i>Cancel</button> 
+                                                                    <button class="btn btn-primary open1" id="editCustomerBasic" type="button"><i class="fa fa-arrow-right fa-1x"></i>Update</button>
+                                                                    <button class="btn btn-default open1" id="cancelcustupdate" type="button"><i class="fa fa-close fa-1x"></i>Cancel</button> 
                                                                 </div>
                                                             </div>
                                                         </form>
