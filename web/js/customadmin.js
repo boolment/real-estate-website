@@ -971,6 +971,249 @@ $("#editCustomerBasic").click(function () {
 });
 /*End of update new customer*/
 
+/*Start of admin change password*/
+$("#adminChange").click(function () {
+    $('input[type="text"]').each(function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
+    var oldpassword = $("#oldpassword").val();
+    if (typeof oldpassword === 'undefined' || !oldpassword)
+    {
+        $("#adminError").css("display =block");
+        $("#adminError").html("Please enter the Old Password");
+        $("#adminError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#adminError").slideUp(1000);
+        });
+        $('#oldpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#oldpassword').css({"border": "", "background": ""});
+    }
+    var newpassword = $("#newpassword").val();
+    if (typeof newpassword === 'undefined' || !newpassword)
+    {
+        $("#adminError").css("display =block");
+        $("#adminError").html("Please enter the New Password");
+        $("#adminError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#adminError").slideUp(1000);
+        });
+        $('#newpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if (newpassword.length < 6)
+    {
+        $("#adminError").css("display =block");
+        $("#adminError").html("Please enter the Password at least 6 digits");
+        $("#adminError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#adminError").slideUp(0);
+        });
+        $('#newpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if (newpassword.length > 10)
+    {
+        $("#adminError").css("display =block");
+        $("#adminError").html("Please enter the Password less than 10 digits");
+        $("#adminError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#adminError").slideUp(0);
+        });
+        $('#newpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#newpassword').css({"border": "", "background": ""});
+    }
+    var confirmpassowrd = $("#confirmpassowrd").val();
+    if (typeof confirmpassowrd === 'undefined' || !confirmpassowrd)
+    {
+        $("#adminError").css("display =block");
+        $("#adminError").html("Please enter the Confirm Password");
+        $("#adminError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#adminError").slideUp(1000);
+        });
+        $('#confirmpassowrd').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#confirmpassowrd').css({"border": "", "background": ""});
+    }
+    $.ajax({
+        type: "POST",
+        url: '../AdminController.do',
+        data: {'action': 'changePassword', 'oldpassword': oldpassword, 'newpassword': newpassword, 'confirmpassowrd': confirmpassowrd},
+        datatype: "json",
+        restful: true,
+        cache: false,
+        timeout: 20000,
+        async: true,
+        success: function (data) {
+            if (data.message === "your password is changed") {
+                $('#oldpassword').val('');
+                $('#newpassword').val('');
+                $('#confirmpassowrd').val('');
+                if (document.getElementById('successBusChange').style.display === 'none') {
+                    document.getElementById('successBusChange').style.display = 'block';
+                    document.getElementById("successBusChange").innerHTML = data.message;
+                } else
+                {
+                    document.getElementById("successBusChange").innerHTML = data.message;
+                }
+                $("#successBusChange").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#successBusChange").slideUp(1000);
+                });
+            } else {
+                if (document.getElementById('adminError').style.display === 'none') {
+                    document.getElementById('adminError').style.display = 'block';
+                    document.getElementById("adminError").innerHTML = data.message;
+                } else
+                {
+                    document.getElementById("adminError").innerHTML = data.message;
+                }
+                $("#adminError").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#adminError").slideUp(1000);
+                });
+            }
+        },
+        error: function () {
+            if (document.getElementById('adminError').style.display === 'none') {
+                $("#adminError").css("display =block");
+                $("#adminError").html("Something went wrong. Please try after some time!");
+            } else
+            {
+                $("#adminError").html("Something went wrong. Please try after some time!");
+            }
+            $("#adminError").fadeTo(2000, 1000).slideUp(1000, function () {
+                $("#adminError").slideUp(1000);
+            });
+        }
+    });
+});
+/*End of admin change password*/
+
+
+/*Start of owner change password*/
+$("#OChangePassword").click(function () {
+    $('input[type="text"]').each(function () {
+        $(this).css({
+            "border": "",
+            "background": ""
+        });
+    });
+    var oldpassword = $("#oldpassword").val();
+    if (typeof oldpassword === 'undefined' || !oldpassword)
+    {
+        $("#ownerError").css("display =block");
+        $("#ownerError").html("Please enter the Old Password");
+        $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#ownerError").slideUp(1000);
+        });
+        $('#oldpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#oldpassword').css({"border": "", "background": ""});
+    }
+    var newpassword = $("#newpassword").val();
+    if (typeof newpassword === 'undefined' || !newpassword)
+    {
+        $("#ownerError").css("display =block");
+        $("#ownerError").html("Please enter the New Password");
+        $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#ownerError").slideUp(1000);
+        });
+        $('#newpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if (newpassword.length < 6)
+    {
+        $("#ownerError").css("display =block");
+        $("#ownerError").html("Please enter the Password at least 6 digits");
+        $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#ownerError").slideUp(0);
+        });
+        $('#newpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else if (newpassword.length > 10)
+    {
+        $("#ownerError").css("display =block");
+        $("#ownerError").html("Please enter the Password less than 10 digits");
+        $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#ownerError").slideUp(0);
+        });
+        $('#newpassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#newpassword').css({"border": "", "background": ""});
+    }
+    var crosspassword = $("#crosspassword").val();
+    if (typeof crosspassword === 'undefined' || !crosspassword)
+    {
+        $("#ownerError").css("display =block");
+        $("#ownerError").html("Please enter the Confirm Password");
+        $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+            $("#ownerError").slideUp(1000);
+        });
+        $('#crosspassword').css({"border": "1px solid red", "background": "#FFCECE"}).focus();
+        return false;
+    } else
+    {
+        $('#crosspassword').css({"border": "", "background": ""});
+    }
+    $.ajax({
+        type: "POST",
+        url: './OwnerController.do',
+        data: {'action': 'changePassword', 'oldpassword': oldpassword, 'newpassword': newpassword, 'confirmpassowrd': crosspassword},
+        datatype: "json",
+        restful: true,
+        cache: false,
+        timeout: 20000,
+        async: true,
+        success: function (data) {
+            if (data.message === "your password is changed") {
+                $('#oldpassword').val('');
+                $('#newpassword').val('');
+                $('#confirmpassowrd').val('');
+                if (document.getElementById('successBus').style.display === 'none') {
+                    document.getElementById('successBus').style.display = 'block';
+                    document.getElementById("successBus").innerHTML = data.message;
+                } else
+                {
+                    document.getElementById("successBus").innerHTML = data.message;
+                }
+                $("#successBus").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#successBus").slideUp(1000);
+                });
+            } else {
+                if (document.getElementById('ownerError').style.display === 'none') {
+                    document.getElementById('ownerError').style.display = 'block';
+                    document.getElementById("ownerError").innerHTML = data.message;
+                } else
+                {
+                    document.getElementById("ownerError").innerHTML = data.message;
+                }
+                $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+                    $("#ownerError").slideUp(1000);
+                });
+            }
+        },
+        error: function () {
+            if (document.getElementById('ownerError').style.display === 'none') {
+                $("#ownerError").css("display =block");
+                $("#ownerError").html("Something went wrong. Please try after some time!");
+            } else
+            {
+                $("#ownerError").html("Something went wrong. Please try after some time!");
+            }
+            $("#ownerError").fadeTo(2000, 1000).slideUp(1000, function () {
+                $("#ownerError").slideUp(1000);
+            });
+        }
+    });
+});
+/*End of owner change password*/
+
 /*Start of admin signin area*/
 $("#adminSignIn").click(function () {
     $('input[type="text"]').each(function () {
@@ -1814,6 +2057,52 @@ function customerProfileBlock(dataItem)
 
 }
 /*End of customer profile block*/
+
+/* Start of admin change pass cancel button*/
+$('#canceladminchangepass').click(function () {
+    $('#oldpassword').val('');
+    $('#newpassword').val('');
+    $('#confirmpassowrd').val('');
+});
+/*End of admin change pass cancel button*/
+
+/* Start of coupan  cancel button*/
+$('#cancelCoupan').click(function () {
+    $('input[type=text]').each(function () {
+        $(this).val('');
+    });
+});
+/*End of coupan cancel button*/
+
+/* Start of coupan update cancel button*/
+$('#cancelCoupanupdate').click(function () {
+    $('input[type=text]').each(function () {
+        $(this).val('');
+    });
+    $('#coupanStatus').val('');
+});
+/*End of coupan update cancel button*/
+
+/* Start of customer update cancel button*/
+$('#cancelcustupdate').click(function () {
+    $('input[type=text]').each(function () {
+        $(this).val('');
+    });
+    $('#cmobilenumber').val('');
+    $('#custStatus').val('');
+});
+/*End of customer update cancel button*/
+
+/* Start of owner update cancel button*/
+$('#cancelOwnerupdate').click(function () {
+    $('input[type=text]').each(function () {
+        $(this).val('');
+    });
+    $('#mobno').val('');
+    $('#emailId').val('');
+    $('#ostatus').val('');
+});
+/*End of owner update cancel button*/
 
 
 function validateEmail(email) {
