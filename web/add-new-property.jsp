@@ -53,39 +53,7 @@
                         <div class="propDetails">
                             <h4>Submit New Property</h4>
                             <form>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4>Owner Basic Details </h4>
-                                    </div> 
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="fname" class="control-label">First Name</label>
-                                            <input type="text" class="form-control" id="fname" placeholder="First Name" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="lname" class="control-label">Last Name</label>
-                                            <input type="text" class="form-control" id="lname" placeholder="Last Name">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="mnumber" class="control-label">Phone Number</label>
-                                            <input type="number" class="form-control" id="mnumber" placeholder="998998999" required="">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 col-md-6">
-                                        <div class="form-group">
-                                            <label for="email" class="control-label">Email Id</label>
-                                            <input type="email" class="form-control" id="email" placeholder="jhon@othogo.com" required="">
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="ownershipDetails">
@@ -97,35 +65,21 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group customRadio">
                                             <label for="owner" class="control-label">Ownership Details</label>
-                                            <div class="radio">
-                                                <label class="radio-custom radio-inline" data-initialize="radio" id="owner-0">
-                                                    <input name="owner" type="radio" value="Landlord"> <span class="radio-label">Landlord</span>
-                                                </label>
-
-                                                <label class="radio-custom radio-inline" data-initialize="radio" id="owner-1">
-                                                    <input name="owner" type="radio" value="Tenant"> <span class="radio-label">Tenant</span>
-                                                </label>
-                                            </div>
+                                            <select class="form-control" id="flatType">
+                                                <option value="Landlord">Landlord</option>
+                                                <option value="Tenant">Tenant</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group customRadio">
                                             <label for="livestype" class="control-label">Who lives in the property ?</label>
 
-                                            <div class="radio">
-                                                <label class="radio-custom radio-inline" data-initialize="radio" id="livestype-0">
-                                                    <input name="livestype" type="radio" value="Landlord"> <span class="radio-label">Landlord</span>
-                                                </label>
-
-                                                <label class="radio-custom radio-inline" data-initialize="radio" id="livestype-1">
-                                                    <input  name="livestype" type="radio" value="Tenants"> <span class="radio-label">Tenants</span>
-                                                </label>
-
-                                                <label class="radio-custom radio-inline" data-initialize="radio" id="livestype-2">
-                                                    <input name="livestype" type="radio" value="Empty"> <span class="radio-label">Empty</span>
-                                                </label>
-
-                                            </div>
+                                            <select class="form-control" id="flatType">
+                                                <option value="Landlord">Landlord</option>
+                                                <option value="Tenant">Tenants</option>
+                                                 <option value="Empty">Empty</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
